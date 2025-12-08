@@ -1,0 +1,51 @@
+{% extends 'admin_panel_app/base_page.html' %}
+{% load static %}
+
+{% block page_headers_block %}
+    <link rel="stylesheet" href="{% static 'admin_panel_app/css/data_definition_garbages_data_page.css' %}">
+{% endblock %}
+
+{% block page_title_block %}تعریف داده ها{% endblock %}
+{% block page_name_block %}تعریف داده ها{% endblock %}
+
+{% block page_contents_block %}
+    {#    <div class="button_group_div margin_top_20 w_90">#}
+    {#        <a class="button_element background_color_2 text_color_0 font_Ray">تعریف زباله</a>#}
+    {#        <a class="button_element background_color_0_2 text_color_1 font_Ray margin_right_10">تعریف منابع</a>#}
+    {#    </div>#}
+    <div class="tab_div">
+        <div class="garbages_list_div w_100">
+            <table class="table_element w_100 font_Ray text_align_center">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>آیتم زباله</th>
+                    <th>واحد</th>
+                    <th>قیمت</th>
+                    {% if write_data_definition_page %}
+                        <th>جزئیات</th>
+                    {% endif %}
+                </tr>
+                </thead>
+                <tbody>
+                {% for garbage in garbages_data %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ garbage.garbage_item_name }}</td>
+                        <td>{{ garbage.units_of_measurement_data }}</td>
+                        <td>{{ garbage.price_per_unit }}</td>
+                        {% if write_data_definition_page %}
+                            <td><a class="show_button cursor_pointer" href="/edit_garbage_page/?garbage_id={{ garbage.id }}"><i class="bi bi-eye-fill"></i></a></td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            {% if write_data_definition_page %}
+                <div class="button_group_div w_100 dir_rtl">
+                    <a class="button_element font_12px background_color_2 text_color_0 border_none font_Ray margin_top_10 margin_left_10 margin_bottom_10" href="/create_garbage_page/">زباله جدید</a>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends 'base_app/base_page.html' %}
+{% load static %}
+
+{% block page_title %}لیست زباله ها{% endblock %}
+
+{% block page_headers_div %}
+    <link rel="stylesheet" href="{% static 'orders_app/css/order_datetime_page.css' %}">
+    <script src="{% static 'orders_app/js/order_datetime_page.js' %}"></script>
+
+    <link rel="stylesheet" href="{% static 'orders_app/css/persian_datepicker/persian_datepicker.css' %}">
+    <script src="{% static 'orders_app/js/persian_datepicker/persian_date.js' %}"></script>
+    <script src="{% static 'orders_app/js/persian_datepicker/persian_datepicker.js' %}"></script>
+{% endblock %}
+
+{% block back_button_block %}
+    <a class="text_color_3 back_button" href="/order_garbages_list_page/?access_token={{ access_token }}"><i class="bi bi-caret-left-fill"></i></a>
+{% endblock %}
+
+{% block page_contents_block %}
+    <form action="/order_datetime_page/" method="post" class="w_90">
+        {% csrf_token %}
+        <input type="hidden" value="{{ access_token }}" name="access_token_input">
+        <div class="input_group_div w_100 margin_top_20">
+            <label class="font_Ray text_color_1" for="order_title_input">عنوان درخواست:</label>
+            <input autocomplete="off" maxlength="20" class="input_element background_color_0 border_0_2 font_Ray cursor_pointer" id="order_title_input" name="order_title_input" onkeyup="check_inputs()">
+        </div>
+        <div class="input_group_div w_100 margin_top_10 margin_bottom_20">
+            <label class="font_Ray" for="order_description_input">توضیحات درخواست:</label>
+            <textarea class="input_element background_color_0 border_0_2 font_Ray text_area" id="order_description_input" name="order_description_input" onkeyup="check_inputs()"></textarea>
+        </div>
+        <div class="font_Ray margin_top_20 w_100 text_align_center dir_rtl text_color_2">انتخاب بازه زمانی</div>
+        <div class="input_group_div w_100 margin_top_10">
+            <label class="font_Ray text_color_1" for="datepicker_from_input">از تاریخ:</label>
+            <input autocomplete="off" class="input_element background_color_0 border_0_2 font_Ray cursor_pointer" dir="ltr" type="text" id="datepicker_from_input" placeholder="از تاریخ" name="datepicker_from_input">
+        </div>
+        <div class="input_group_div w_100 margin_top_10">
+            <label class="font_Ray text_color_1" for="datepicker_to_input">تا تاریخ:</label>
+            <input autocomplete="off" class="input_element background_color_0 border_0_2 font_Ray cursor_pointer" dir="ltr" type="text" id="datepicker_to_input" placeholder="از تاریخ" name="datepicker_to_input">
+        </div>
+        <div class="w_100 margin_top_20 buttons_div">
+            <button class="button_element background_color_2 text_color_0 border_none font_Ray w_100 margin_bottom_10 next_button disabled_element" disabled id="save_button">ثبت نهایی</button>
+        </div>
+    </form>
+{% endblock %}

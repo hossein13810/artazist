@@ -1,0 +1,65 @@
+{% extends 'admin_panel_app/base_page.html' %}
+{% load static %}
+
+{% block page_headers_block %}
+    <link rel="stylesheet" href="{% static 'admin_panel_app/css/financial_requests_list_page.css' %}">
+    <script src="{% static 'admin_panel_app/js/financial_requests_list_page.js' %}"></script>
+    <script src="{% static 'admin_panel_app/js/excel_writer.js' %}"></script>
+
+    <link rel="stylesheet" href="{% static 'base_app/css/persian_date_picker/persian_date_picker.css' %}">
+    <script src="{% static 'base_app/js/persian_date_picker/persian_date.js' %}"></script>
+    <script src="{% static 'base_app/js/persian_date_picker/persian_date_picker.js' %}"></script>
+{% endblock %}
+
+{% block page_title_block %}لیست درخواست های مالی{% endblock %}
+{% block page_name_block %}لیست درخواست های مالی{% endblock %}
+
+{% block page_contents_block %}
+    <input type="hidden" value="{{ write_financial_requests_list_page }}" id="write_financial_requests_list_page_input">
+    <div class="requests_list_div w_90 margin_top_20">
+        <div class="options_div">
+            <div class="filter_checks">
+                <div class="check_input_div">
+                    <label class="font_Ray cursor_pointer" for="unpaied_check_input">پرداخت نشده</label>
+                    <input type="checkbox" id="unpaied_check_input" class="cursor_pointer" checked onchange="filter_status()">
+                </div>
+                <div class="check_input_div margin_right_10">
+                    <label class="font_Ray cursor_pointer" for="paied_check_input">پرداخت شده</label>
+                    <input type="checkbox" id="paied_check_input" class="cursor_pointer" checked onchange="filter_status()">
+                </div>
+                <div class="check_input_div margin_right_10">
+                    <label class="font_Ray cursor_pointer" for="error_check_input">مشکل دار</label>
+                    <input type="checkbox" id="error_check_input" class="cursor_pointer" checked onchange="filter_status()">
+                </div>
+
+                <div class="margin_right_30 date_input_div">
+                    <label class="font_Ray" for="from_date_input">از تاریخ:</label>
+                    <input class="input_element font_Ray background_color_0_4 border_0_2 cursor_pointer" dir="rtl" readonly id="from_date_input" placeholder="انتخاب تاریخ">
+                </div>
+                <div class="margin_right_20 date_input_div">
+                    <label class="font_Ray" for="to_date_input">تا تاریخ:</label>
+                    <input class="input_element font_Ray background_color_0_4 border_0_2 cursor_pointer" dir="rtl" readonly id="to_date_input" placeholder="انتخاب تاریخ">
+                </div>
+            </div>
+            <div class="buttons_div">
+                <button class="button_element background_color_2 font_12px border_none text_color_0 font_Ray" onclick="exportExcel()">دانلود اکسل</button>
+                <a class="button_element background_color_2 font_12px border_none text_color_0 font_Ray" href="/financial_chart_show_page/">نمایش نمودار</a>
+                <button class="button_element background_color_0_2 font_12px border_none text_color_1 font_Ray" onclick="clear_filters()">حذف فیلتر ها</button>
+            </div>
+        </div>
+        <table class="table_element text_align_center font_Ray w_100 dir_rtl margin_top_20" id="requests_table">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>نام کاربر</th>
+                <th>شماره کاربر</th>
+                <th>شماره شبا</th>
+                <th>مبلغ درخواست</th>
+                <th>تاریخ درخواست</th>
+                <th>وضعیت</th>
+            </tr>
+            </thead>
+            <tbody id="table_tbody"></tbody>
+        </table>
+    </div>
+{% endblock %}

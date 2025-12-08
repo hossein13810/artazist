@@ -1,0 +1,39 @@
+{% extends 'base_app/base_page.html' %}
+{% load static %}
+
+{% block page_title %}لیست زباله ها{% endblock %}
+
+{% block page_headers_div %}
+    <link rel="stylesheet" href="{% static 'orders_app/css/order_garbages_list_page.css' %}">
+    <script src="{% static 'orders_app/js/order_garbages_list_page.js' %}"></script>
+{% endblock %}
+
+{% block back_button_block %}
+    <a class="text_color_3 back_button" href="/order_map_page/"><i class="bi bi-caret-left-fill"></i></a>
+{% endblock %}
+
+{% block page_contents_block %}
+    <input type="hidden" value="{{ access_token }}" id="access_token">
+    <div class="garbages_list_div w_90">
+        {% if order_garbages_data|length == 0 %}
+            <div class="font_Ray text_color_error w_100 text_align_center dir_rtl margin_top_10">هنوز زباله ای اضافه نکردید!</div>
+        {% endif %}
+        {% for item in order_garbages_data %}
+            <div class="one_garbage_div w_100">
+                <div class="garbage_data_div">
+                    <div class="garbage_text_div font_Ray">{{ item.garbage_data.garbage_item_name }}</div>
+                    <div class="garbage_text_div text_color_2">{{ item.garbage_amount }} {{ item.garbage_data.units_of_measurement_data.unit_name }}</div>
+                    <div class="garbage_text_div text_color_0_3 text_align_justify description_text">{{ item.description }}</div>
+                </div>
+                <div class="edit_garbage_data_div font_Ray">
+                    <a class="text_color_3" href="/order_edit_garbage_page/?access_token={{ access_token }}&garbage_db_id={{ item.id }}"><i class="bi bi-pencil-fill"></i></a>
+                    <a class="text_color_3" onclick="delete_garbage('{{ item.id }}')"><i class="bi bi-trash3-fill"></i></a>
+                </div>
+            </div>
+        {% endfor %}
+        <a href="/order_add_garbage_page/?access_token={{ access_token }}" class="background_color_3 button_element margin_top_10 border_none add_button text_color_0 font_Ray">افزودن زباله</a>
+    </div>
+    <div class="w_90 margin_top_20 buttons_div">
+        <a class="button_element background_color_2 text_color_0 border_none font_Ray w_100 margin_bottom_10 next_button {% if order_garbages_data|length == 0 %}disabled_element{% endif %}" {% if order_garbages_data|length == 0 %}disabled{% endif %} href="/order_datetime_page/?access_token={{ access_token }}">ادامه</a>
+    </div>
+{% endblock %}

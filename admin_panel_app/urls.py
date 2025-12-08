@@ -1,0 +1,41 @@
+from django.urls import path
+from django.views.decorators.csrf import csrf_exempt
+
+from . import views
+
+urlpatterns = [
+    path('', views.AdminLoginPageClass.as_view(), name='AdminLoginPageClass'),
+    path('admin_login_page/', views.AdminLoginPageClass.as_view(), name='AdminLoginPageClass'),
+    path('orders_list_page/', views.OrdersListPageClass.as_view(), name='OrdersListPageClass'),
+    path('load_orders_data/', csrf_exempt(views.LoadOrdersDataClass.as_view()), name='LoadOrdersDataClass'),
+    path('load_garbages_data/', csrf_exempt(views.LoadGarbagesDataClass.as_view()), name='LoadGarbagesDataClass'),
+    path('load_garbage_details/', csrf_exempt(views.LoadGarbageDetailsClass.as_view()), name='LoadGarbageDetailsClass'),
+    path('save_order_details/', csrf_exempt(views.SaveOrderDetailsClass.as_view()), name='SaveOrderDetailsClass'),
+    path('save_order_status/', views.SaveOrderStatusClass.as_view(), name='SaveOrderStatusClass'),
+    path('orders_details_page/', views.OrdersDetailsPageClass.as_view(), name='OrdersDetailsPageClass'),
+    path('financial_requests_list_page/', views.FinancialRequestsListPageClass.as_view(), name='FinancialRequestsListPageClass'),
+    path('load_financial_requests_data/', csrf_exempt(views.LoadFinancialRequestsDataClass.as_view()), name='LoadFinancialRequestsDataClass'),
+    path('save_financial_status/', csrf_exempt(views.SaveFinancialStatusClass.as_view()), name='SaveFinancialStatusClass'),
+    path('send_message_page/', views.SendMessagePageClass.as_view(), name='SendMessagePageClass'),
+    path('send_message/', csrf_exempt(views.SendMessagePageClass.as_view())),
+    path('operation_messages_data_manager/', views.OperationMessagesDataManagerClass.as_view()),
+    path('users_list_page/', views.UsersListPageClass.as_view(), name='UsersListPageClass'),
+    path('data_definition_garbages_data_page/', views.DataDefinitionGarbagesDataPageClass.as_view(), name='DataDefinitionGarbagesDataPageClass'),
+    path('create_category_page/', views.CreateCategoryPageClass.as_view(), name='CreateCategoryPageClass'),
+    path('edit_category_page/', views.EditCategoryPageClass.as_view(), name='EditCategoryPageClass'),
+    path('delete_category/', views.DeleteCategoryClass.as_view(), name='DeleteCategoryClass'),
+    path('create_unit_page/', views.CreateUnitPageClass.as_view(), name='CreateUnitPageClass'),
+    path('edit_unit_page/', views.EditUnitPageClass.as_view(), name='EditUnitPageClass'),
+    path('delete_unit/', views.DeleteUnitClass.as_view(), name='DeleteUnitClass'),
+    path('create_garbage_page/', views.CreateGarbagePageClass.as_view(), name='CreateGarbagePageClass'),
+    path('edit_garbage_page/', views.EditGarbagePageClass.as_view(), name='EditGarbagePageClass'),
+    path('delete_garbage/', views.DeleteGarbageClass.as_view(), name='DeleteGarbageClass'),
+    path('admins_list_page/', views.AdminsListPageClass.as_view(), name='AdminsListPageClass'),
+    path('create_admin_page/', views.CreateAdminPageClass.as_view(), name='CreateAdminPageClass'),
+    path('edit_admin_page/', views.EditAdminPageClass.as_view(), name='EditAdminPageClass'),
+    path('delete_admin/', views.DeleteAdminClass.as_view(), name='DeleteAdminClass'),
+    path('financial_chart_show_page/', views.FinancialChartShowPageClass.as_view(), name='FinancialChartShowPageClass'),
+    path('load_charts_data/', csrf_exempt(views.FinancialChartShowPageClass.as_view())),
+    path('admin_account_settings_page/', views.AdminAccountSettingsPageClass.as_view(), name='AdminAccountSettingsPageClass'),
+    path('admin_logout/', views.LogoutClass.as_view(), name='LogoutClass'),
+]

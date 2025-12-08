@@ -1,0 +1,25 @@
+{% extends 'base_app/base_page.html' %}
+{% load static %}
+
+{% block page_title %}قیمت ها{% endblock %}
+
+{% block page_headers_div %}
+    <link rel="stylesheet" href="{% static 'main_app/css/prices_page.css' %}">
+{% endblock %}
+
+{% block page_contents_block %}
+    <div class="prices_list_div w_90">
+        {% for key, value in prices_data_dict.items %}
+            <div class="w_100 dir_rtl">
+                <div class="font_Ray_Medium w_100 margin_top_20 categories_name_div">{{ key }}</div>
+            </div>
+            {% for item in value %}
+                <div class="one_price_div w_100">
+                    <div class="font_Ray div_1">{{ item.garbage_item_name }}</div>
+                    <div class="font_Ray text_color_3 div_2">1 {{ item.units_of_measurement_data.unit_name }}</div>
+                    <div class="font_Ray text_color_2 div_3">{{ item.price_per_unit }} تومان</div>
+                </div>
+            {% endfor %}
+        {% endfor %}
+    </div>
+{% endblock %}

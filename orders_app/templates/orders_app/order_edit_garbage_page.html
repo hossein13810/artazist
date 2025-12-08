@@ -1,0 +1,49 @@
+{% extends 'base_app/base_page.html' %}
+{% load static %}
+
+{% block page_title %}افزودن زباله{% endblock %}
+
+{% block page_headers_div %}
+    <link rel="stylesheet" href="{% static 'orders_app/css/order_add_garbage_page.css' %}">
+    <script src="{% static 'orders_app/js/order_edit_garbage_page.js' %}"></script>
+{% endblock %}
+
+{% block back_button_block %}
+    <a class="text_color_3 back_button" href="/order_garbages_list_page/?access_token={{ access_token }}"><i class="bi bi-caret-left-fill"></i></a>
+{% endblock %}
+
+{% block page_contents_block %}
+    <form action="/order_edit_garbage_page/" method="post" class="w_90">
+        {% csrf_token %}
+        <input type="hidden" name="access_token" value="{{ access_token }}">
+        <input type="hidden" name="order_garbage_db_id_input" value="{{ garbage_db_data.id }}">
+        <div class="input_group_div w_100 margin_top_20">
+            <label class="font_Ray" for="garbage_categories_select">دسته بندی زباله:</label>
+            <select class="input_element background_color_3 border_3_0.5 font_Ray" id="garbage_categories_select" name="garbage_categories_select" onchange="check_inputs()">
+                <option value="">انتخاب کنید</option>
+                <option data-hidden="true" value="{{ garbage_db_data.garbage_data.garbage_categories_data.id }}" name="{{ garbage_db_data.garbage_data.garbage_categories_data.description }}" selected>{{ garbage_db_data.garbage_data.garbage_categories_data.categories_name }}</option>
+            </select>
+            <span class="font_Ray text_color_0_3 margin_right_10 description_span" id="garbage_categories_description_span"></span>
+        </div>
+        <div class="input_group_div w_100 margin_top_10">
+            <label class="font_Ray" for="garbage_item_select">آیتم زباله:</label>
+            <select class="input_element background_color_3 border_1 font_Ray" id="garbage_item_select" name="garbage_item_select" onchange="check_inputs()">
+                <option value="">ابتدا دسته بندی زباله را انتخاب کنید</option>
+                <option data-hidden="true" value="{{ garbage_db_data.garbage_data.id }}" name="{{ garbage_db_data.garbage_data.description }}-.-.-{{ garbage_db_data.garbage_data.units_of_measurement_data.unit_name }}-.-.-{{ garbage_db_data.garbage_data.price_per_unit }}" selected hidden>{{ garbage_db_data.garbage_data.garbage_item_name }}</option>
+            </select>
+            <span class="font_Ray text_color_0_3 margin_right_10 description_span" id="garbage_item_description_span"></span>
+        </div>
+        <div class="input_group_div w_100 margin_top_10">
+            <label class="font_Ray" for="garbage_amount_input">مقدار زباله:<span class="text_color_2 font_Ray garbage_unit_span" id="garbage_unit_span"> (-) </span></label>
+            <input autocomplete="off" type="number" class="input_element background_color_0 border_0_2 font_Ray" id="garbage_amount_input" name="garbage_amount_input" onkeyup="check_inputs()" value="{{ garbage_db_data.garbage_amount }}">
+            <span class="font_Ray text_color_0_3 margin_right_10 description_span" id="garbage_unit_price_span"></span>
+        </div>
+        <div class="input_group_div w_100 margin_top_20">
+            <label class="font_Ray" for="description_input">توضیحات:</label>
+            <textarea class="input_element background_color_0 border_0_2 font_Ray text_area" id="description_input" name="description_input" onkeyup="check_inputs()">{{ garbage_db_data.description }}</textarea>
+        </div>
+        <div class="button_group_div w_100">
+            <button class="button_element background_color_2 text_color_0 border_none font_Ray w_100 margin_top_20 disabled_element" disabled id="add_button">ذخیره تغییرات</button>
+        </div>
+    </form>
+{% endblock %}

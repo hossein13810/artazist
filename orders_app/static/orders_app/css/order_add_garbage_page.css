@@ -1,0 +1,12 @@
+.text_area {
+    height: 150px;
+}
+
+.description_span {
+    font-size: 12px;
+    min-height: 20px;
+}
+
+.garbage_unit_span {
+    font-size: 12px;
+}
