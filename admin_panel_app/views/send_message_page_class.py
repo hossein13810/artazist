@@ -23,7 +23,6 @@ class SendMessagePageClass(LoginRequiredMixin, RoleRequiredMixin, View):
 
     def post(self, request):
         users_list_select = self.request.POST.get('users_list_select')
-        message_title_input = self.request.POST.get('message_title_input')
         message_text_input = self.request.POST.get('message_text_input')
         send_mode_notif_input = self.request.POST.get('send_mode_notif_input')
 
@@ -36,7 +35,7 @@ class SendMessagePageClass(LoginRequiredMixin, RoleRequiredMixin, View):
 
         if send_mode_notif_input == 'true':
             for user in users_list:
-                status = send_notification(device_token=UsersData.objects.get(phone_number=user).device_token, message_title=message_title_input, message_text=message_text_input)
+                status = send_notification(device_token=UsersData.objects.get(phone_number=user).device_token, message_text=message_text_input)
                 OperationMessagesDataManagerClass.update_message(message_text=f'0{user} --- {status} --- اعلان')
 
         time.sleep(2)

@@ -7,7 +7,6 @@ function start_send_messages() {
     let inputs_div = document.getElementById('inputs_div');
     let logger_div = document.getElementById('logger_div');
     let users_list_select = $('#users_list_select').select2();
-    let message_title_input = document.getElementById('message_title_input');
     let message_text_input = document.getElementById('message_text_input');
     let send_mode_notif_input = document.getElementById('send_mode_notif_input');
     let logger_text_area = document.getElementById('logger_text_area');
@@ -23,7 +22,6 @@ function start_send_messages() {
 
     let form_data = new FormData();
     form_data.append('users_list_select', users_list_select);
-    form_data.append('message_title_input', message_title_input.value);
     form_data.append('message_text_input', message_text_input.value);
     form_data.append('send_mode_notif_input', send_mode_notif_input.checked);
 
