@@ -1,41 +1,24 @@
-import json
-from pathlib import Path
-
 import requests
-from google.oauth2 import service_account
-from google.auth.transport.requests import Request
 
 
-def send_notification(device_token, message_title, message_text):
-    service_account_file = f'{Path(__file__).resolve().parent}/artazist-b84b1-16379cccb75e.json'
-    project_id = "artazist-b84b1"
-    scopes = ["https://www.googleapis.com/auth/firebase.messaging"]
-    credentials = service_account.Credentials.from_service_account_file(service_account_file, scopes=scopes)
-    credentials.refresh(Request())
-    access_token = credentials.token
+def send_notification(device_token, message_text):
+    PUSHY_API_KEY = "e14ee828b4bad06fb90afc3ebfbfeef34efe87cbcb12fbd2f2c59e229d105d48"
 
-    url = f"https://fcm.googleapis.com/v1/projects/{project_id}/messages:send"
-
-    message = {
-        "message": {
-            "token": device_token,
-            "notification": {
-                "title": message_title,
-                "body": message_text
-            },
-            "data": {
-                "key1": "value1"
-            }
+    payload = {
+        "to": device_token,
+        "data": {
+            "message": message_text
         }
     }
 
+    headers = {
+        "Authorization": f"Bearer {PUSHY_API_KEY}"
+    }
+
     response = requests.post(
-        url,
-        headers={
-            "Authorization": f"Bearer {access_token}",
-            "Content-Type": "application/json; UTF-8",
-        },
-        data=json.dumps(message)
+        f"https://api.pushy.me/push?api_key={PUSHY_API_KEY}",
+        json=payload,
+        headers=headers
     )
 
     return response.status_code
