@@ -6,6 +6,17 @@ body {
     background-color: var(--color-4);
 }
 
+body, * {
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+    -ms-user-select: none !important;
+    user-select: none !important;
+}
+
+body {
+    -webkit-touch-callout: none !important;
+}
+
 input:focus, textarea:focus {
     outline: none !important;
 }
