@@ -18,7 +18,7 @@
 .garbage_data_div {
     flex: 1;
     padding: 7px 5px;
-    color: var(--color-3);
+    color: var(--color-2);
     text-align: right;
     font-family: Ray, serif;
 }
@@ -42,7 +42,7 @@
 .edit_garbage_data_div a i {
     display: flex;
     font-size: 17px;
-    color: var(--color-3) !important;
+    color: var(--color-2) !important;
 }
 
 

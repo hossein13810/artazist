@@ -14,7 +14,6 @@
             <thead>
             <tr>
                 <th>#</th>
-                <th>جنسیت</th>
                 <th>نام و نام خانوادگی</th>
                 <th>شماره موبایل</th>
                 <th>کد ملی</th>
@@ -28,7 +27,6 @@
             {% for user in users_list %}
                 <tr>
                     <td>{{ forloop.counter }}</td>
-                    <td class="icon_td">{% if user.gender == 'مرد' %}<i class="bi bi-person-fill analyze_color_3"></i>{% elif user.gender == 'زن' %}<i class="bi bi-person-fill analyze_color_3_2"></i>{% endif %}</td>
                     <td>{{ user.user_firstname }} {{ user.user_lastname }}</td>
                     <td>{{ user.phone_number }}</td>
                     <td>{{ user.national_code }}</td>

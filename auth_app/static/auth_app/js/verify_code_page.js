@@ -18,7 +18,7 @@ function timer_func() {
 
         if (time < 0) {
             clearInterval(countdown);
-            send_code_again_span.innerHTML = "<button type='button' onclick='location.reload();' class='text_color_2 font_Ray background_color_0 border_2 button_element font_12px'>ارسال مجدد کد</button>";
+            send_code_again_span.innerHTML = "<button type='button' onclick='show_loading_div(), location.reload();' class='text_color_2 font_Ray background_color_0 border_2 button_element font_12px'>ارسال مجدد کد</button>";
         }
     }, 1000);
 }
@@ -29,11 +29,11 @@ function check_input() {
 
     if (random_code_input.value.trim() !== '' && random_code_input.value.length === 5) {
         next_button.classList.remove('disabled_element');
-        next_button.classList.add('background_color_2');
+        next_button.classList.add('background_color_0');
         next_button.disabled = false;
     } else {
         next_button.classList.add('disabled_element');
-        next_button.classList.remove('background_color_2');
+        next_button.classList.remove('background_color_0');
         next_button.disabled = true;
     }
 }

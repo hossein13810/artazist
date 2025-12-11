@@ -153,7 +153,7 @@ function play_audio() {
                     <input class="input_element background_color_0_4 text_color_0_3 font_Ray border_0_2" aria-label="" placeholder="عنوان آدرس منتخب" id="selected_address_title_input" name="selected_address_title_input" onkeyup="check_address_title_input()" autocomplete="off">
                 </div>
                 <div class="button_group_div margin_top_10">
-                    <button class="button_element font_Ray w_48 text_color_0 disabled_element border_none" disabled id="add_button">افزودن</button>
+                    <button class="button_element font_Ray w_48 text_color_0 disabled_element border_none" disabled id="add_button" onclick="show_loading_div()">افزودن</button>
                     <button class="button_element font_Ray background_color_0_2 w_48 text_color_3 border_0_2" type="button" onclick="show_hide_popup('hide')">نمیخوام</button>
                 </div>
             </form>
@@ -255,7 +255,7 @@ function get_identification_code() {
                     <input class="input_element background_color_0_4 text_color_0_3 font_Ray border_0_2" type="tel" aria-label="" id="identification_code_input" name="identification_code_input" onkeyup="check_identification_code_input()" autocomplete="off">
                 </div>
                 <div class="button_group_div margin_top_10">
-                    <button class="button_element font_Ray w_48 text_color_0 disabled_element border_none" disabled id="save_button">ذخیره</button>
+                    <button class="button_element font_Ray w_48 text_color_0 disabled_element border_none" disabled id="save_button" onclick="show_loading_div()">ذخیره</button>
                     <button class="button_element font_Ray background_color_0_2 w_48 text_color_3 border_0_2" type="button" onclick="show_hide_popup('hide')">ندارم</button>
                 </div>
             </form>
@@ -284,9 +284,9 @@ function introducing_to_friends() {
     popup_div.innerHTML = `
         <form action="/save_selected_address/" method="post">
             <div class="font_Ray_Black w_100 text_align_center margin_top_20">معرفی به دوستان!</div>
-            <div class="font_Ray font_12px w_100 text_align_justify text_color_0_3">با معرفی برنامه به دوستاتون 10 هزار تومن به کیف پولتون اضافه میشه. کد معرفی شما این پایینه، دوستاتتون بعد از وارد شدن به برنامه میتونن اونو وارد کنن و شما رو به عنوام معرف ثبت کنن.</div>
+            <div class="font_Ray font_12px w_100 text_align_justify text_color_0_3">با معرفی برنامه به دوستاتون 10 هزار تومان به کیف پولتون اضافه میشه. کد معرفی شما این پایینه، دوستاتتون بعد از وارد شدن به برنامه میتونن اینو وارد کنن و شما رو به عنوان معرف ثبت کنن.</div>
             <div class="input_group_div w_100 margin_top_20">
-                <input class="input_element background_color_0_4 text_color_0_3 font_Ray border_0_2 text_align_center" aria-label="" readonly id="my_identification_code_input" name="my_identification_code_input" value="${my_identification_code}">
+                <input class="input_element background_color_0_4 text_color_1 font_Ray border_0_2 text_align_center" aria-label="" readonly id="my_identification_code_input" name="my_identification_code_input" value="${my_identification_code}">
             </div>
             <div class="button_group_div margin_top_10">
                 <button class="button_element font_Ray background_color_2 w_48 text_color_0 border_none copy_button" type="button" onclick="copy_text('${my_identification_code}', this)">کپی کردن</button>

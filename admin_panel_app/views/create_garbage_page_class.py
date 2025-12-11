@@ -22,12 +22,14 @@ class CreateGarbagePageClass(LoginRequiredMixin, RoleRequiredMixin, View):
         garbage_item_name_input = self.request.POST.get('garbage_item_name_input')
         unit_input = self.request.POST.get('unit_input')
         price_input = self.request.POST.get('price_input')
+        icon_input = self.request.FILES.get('icon_input')
+        image_input = self.request.FILES.get('image_input')
         description_input = self.request.POST.get('description_input')
 
         if GarbageData.objects.filter(garbage_item_name=garbage_item_name_input).exists():
             messages.error(request, 'یک زباله با این نام وجود دارد')
             return redirect('CreateGarbagePageClass')
         else:
-            GarbageData.objects.create(garbage_item_name=garbage_item_name_input, units_of_measurement_data=unit_input, price_per_unit=price_input, description=description_input)
+            GarbageData.objects.create(garbage_item_name=garbage_item_name_input, units_of_measurement_data=unit_input, price_per_unit=price_input, garbage_icon=icon_input, garbage_image=image_input, description=description_input)
             messages.success(request, 'زباله جدید با موفقیت ایجاد شد')
             return redirect('DataDefinitionGarbagesDataPageClass')

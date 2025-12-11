@@ -59,15 +59,15 @@ function set_menu_button_active_style() {
         const key_1 = Object.keys(pages_titles).find(key => pages_titles[key].includes(page_title));
         let bottom_button_element = document.getElementById(key_1);
         try {
-            bottom_button_element.classList.remove('text_color_3');
-            bottom_button_element.classList.add('text_color_2');
+            bottom_button_element.classList.remove('text_color_0_3');
+            bottom_button_element.classList.add('text_color_0');
         } catch {
 
         }
         const key_2 = Object.keys(menu_links).find(key => menu_links[key].includes(page_title));
         let menu_button_element = document.getElementById(key_2);
-        menu_button_element.classList.remove('text_color_3');
-        menu_button_element.classList.add('text_color_2');
+        menu_button_element.classList.remove('background_color_0', 'text_color_1');
+        menu_button_element.classList.add('background_color_2', 'text_color_0');
     }
 }
 

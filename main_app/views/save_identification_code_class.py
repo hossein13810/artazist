@@ -16,11 +16,12 @@ class SaveIdentificationCodeClass(LoginRequiredMixin, View):
         identification_code_input = self.request.POST.get('identification_code_input')
         if UsersData.objects.filter(identification_code=identification_code_input).exists():
             user_data = UsersData.objects.get(my_identification_code=identification_code_input)
-            wallet_data = WalletsData.objects.get(user_data=user_data)
-            wallet_data.inventory = wallet_data.inventory + 10000
-            wallet_data.save()
+            if identification_code_input != user_data.my_identification_code:
+                wallet_data = WalletsData.objects.get(user_data=user_data)
+                wallet_data.inventory = wallet_data.inventory + 10000
+                wallet_data.save()
 
-            my_data = UsersData.objects.get(id=self.request.user.id)
-            my_data.set_identification_code = identification_code_input
-            my_data.save()
+                my_data = UsersData.objects.get(id=self.request.user.id)
+                my_data.set_identification_code = identification_code_input
+                my_data.save()
         return redirect('MainPageClass')

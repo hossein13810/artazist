@@ -12,6 +12,7 @@
     justify-content: space-between;
     box-shadow: 0 0 0.5em var(--color-0-2);
     position: relative;
+    background-color: var(--color-0);
 }
 
 .delete_order {
@@ -43,7 +44,7 @@
 .order_data_div {
     flex: 1;
     padding: 10px;
-    color: var(--color-3);
+    color: var(--color-2);
     text-align: right;
     font-family: Ray, serif;
 }

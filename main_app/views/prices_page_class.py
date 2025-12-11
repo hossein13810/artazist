@@ -11,10 +11,5 @@ class PricesPageClass(LoginRequiredMixin, View):
 
     @staticmethod
     def get(request):
-        categories_data = GarbageCategoriesData.objects.all()
-
-        prices_data_dict = {}
-        for category in categories_data:
-            prices_data_dict[category.categories_name] = GarbageData.objects.filter(garbage_categories_data=category)
-
-        return render(request, 'main_app/prices_page.html', {'prices_data_dict': prices_data_dict})
+        garbage_data = GarbageData.objects.all()
+        return render(request, 'main_app/prices_page.html', {'garbage_data': garbage_data})

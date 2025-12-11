@@ -20,11 +20,11 @@ function check_inputs() {
 
     if (withdrawal_amount_input !== '' && sheba_number_input !== '' && (Number(withdrawal_amount_input) <= Number(user_inventory_input)) && (Number(withdrawal_amount_input) >= 50000) && sheba_number_input.length === 24) {
         save_button.classList.remove('disabled_element');
-        save_button.classList.add('background_color_2');
+        save_button.classList.add('background_color_0');
         save_button.disabled = false;
     } else {
         save_button.classList.add('disabled_element');
-        save_button.classList.remove('background_color_2');
+        save_button.classList.remove('background_color_0');
         save_button.disabled = true;
     }
 }

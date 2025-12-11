@@ -101,7 +101,7 @@
 .garbage_data_div {
     flex: 1;
     padding: 7px 5px;
-    color: var(--color-3);
+    color: var(--color-2);
     text-align: right;
     font-family: Ray, serif;
 }

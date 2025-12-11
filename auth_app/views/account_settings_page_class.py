@@ -27,7 +27,7 @@ class AccountSettingsPageClass(LoginRequiredMixin, View):
         user_data.user_lastname = lastname_input
         user_data.national_code = national_code_input
         user_data.home_address = home_address_input
-        if identification_code_input != '':
+        if identification_code_input != '' and identification_code_input != user_data.my_identification_code:
             friend_data = UsersData.objects.get(my_identification_code=identification_code_input)
             wallet_data = WalletsData.objects.get(user_data=friend_data)
             wallet_data.inventory = wallet_data.inventory + 10000

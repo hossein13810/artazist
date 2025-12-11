@@ -6,6 +6,9 @@
     width: 80px;
     height: 80px;
     overflow: hidden;
+    border-radius: 10px 10px 0 0;
+    filter: drop-shadow(0 0 10px rgba(0,0,0,0.6));
+    overflow: hidden;
 }
 
 .icon_div img {
@@ -23,13 +26,14 @@
 
 .title_div {
     font-size: 30px !important;
-    color: var(--color-0-3);
+    color: var(--color-0);
     text-align: right;
 }
 
 .team_data_div {
     width: 90%;
-    margin-top: 20px;
-    text-align: left;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    text-align: center;
     direction: rtl;
 }

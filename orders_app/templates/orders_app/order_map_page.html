@@ -23,7 +23,7 @@
 {% endblock %}
 
 {% block back_button_block %}
-    <a class="text_color_3 back_button" href="/main_page/" onclick="show_loading_div()"><i class="bi bi-caret-left-fill text_color_3"></i></a>
+    <a class="text_color_0 back_button" href="/main_page/" onclick="show_loading_div()"><i class="bi bi-caret-left-fill text_color_0"></i></a>
 {% endblock %}
 
 {% block page_contents_block %}
@@ -37,7 +37,7 @@
         <div class="my_location_div">
             <button class="text_color_3 font_Ray my_location_button" onclick="go_to_my_location()" type="button" id="my_location_button"><i class="bi bi-crosshair"></i></button>
         </div>
-        <div id="address_div" class="text_color_0_3 font_Ray display_none margin_bottom_10 address_div"></div>
+        <div id="address_div" class="text_color_1 font_Ray display_none margin_bottom_10 address_div"></div>
         <div class="options_div" id="selected_address_list">
             <div class="selected_address_list">
                 {% for address in selected_address_data %}
@@ -69,8 +69,8 @@
                 </button>
             </div>
         </div>
-        <button id="next_button" class="button_element text_color_0 border_none font_Ray next_button disabled_element" type="button" onclick="show_timeline_div()" disabled>انتخاب موقعیت</button>
-        <button id="submit_button" class="button_element text_color_0 background_color_2 border_none font_Ray next_button display_none" onclick="show_loading_div()" type="submit">تایید و ثبت درخواست</button>
+        <button id="next_button" class="button_element text_color_1 border_none font_Ray next_button disabled_element" type="button" onclick="show_timeline_div()" disabled>انتخاب موقعیت</button>
+        <button id="submit_button" class="button_element text_color_1 background_color_0 border_none font_Ray next_button display_none" onclick="show_loading_div()" type="submit">تایید و ثبت درخواست</button>
         <input type="hidden" id="coords_lat_input" name="coords_lat_input">
         <input type="hidden" id="coords_lng_input" name="coords_lng_input">
         <input type="hidden" id="loc_address_input" name="loc_address_input">

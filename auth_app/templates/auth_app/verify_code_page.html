@@ -22,7 +22,7 @@
 
 <div class="login_div">
     <div class="icon_div">
-        <img src="{% static 'base_app/images/artazist_normal.jpg' %}" alt="">
+        <img src="{% static 'base_app/images/artazist_transparent.png' %}" alt="">
     </div>
     <form action="/verify_code_page/" method="post" class="w_100 login_form">
         {% csrf_token %}
@@ -32,7 +32,7 @@
             <input type="tel" autocomplete="off" class="input_element background_color_0_4 border_0_2 font_Ray w_100 text_align_center" dir="auto" id="random_code_input" name="random_code_input" onkeyup="check_input()">
         </div>
         <div class="w_100 button_group_div margin_top_20">
-            <button class="button_element font_Ray border_none text_color_0 w_100 disabled_element" onclick="show_loading_div()" disabled id="next_button">تایید کد<i class="bi bi-arrow-left-short"></i></button>
+            <button class="button_element font_Ray border_none text_color_1 w_100 disabled_element" onclick="show_loading_div()" disabled id="next_button">تایید کد<i class="bi bi-arrow-left-short"></i></button>
         </div>
     </form>
     <div class="support_phone_div w_100 text_align_center margin_top_20">
@@ -40,7 +40,7 @@
             {% csrf_token %}
             <input autocomplete="off" class="input_element background_color_0 border_0_2 font_Ray w_100" dir="auto" id="phone_number_input" name="phone_number_input" type="hidden" value="{{ phone_number_input }}">
 
-            <a class="text_color_2 font_Ray" href="/login_page/">بازگشت</a>
+            <a class="text_color_2 font_Ray" onclick="show_loading_div()" href="/login_page/">بازگشت</a>
             <span class="text_color_1 font_Ray margin_top_10" id="send_code_again_span">ارسال مجدد کد پس از: <span class="text_color_2" id="timer_span">2:00</span></span>
         </form>
     </div>

@@ -3,7 +3,7 @@ body {
     padding: 0;
     width: 100%;
     height: 100vh;
-    background-color: white;
+    background-color: var(--color-4);
 }
 
 input:focus, textarea:focus {
@@ -41,7 +41,7 @@ i {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: var(--color-3);
+    background: var(--color-2);
 }
 
 * {
@@ -96,7 +96,7 @@ a, button, select {
 }
 
 .info_input_div .input_element {
-    border-radius: 0 7px 7px 0;
+    border-radius: 0 12px 12px 0;
 }
 
 .info_span {
@@ -104,7 +104,7 @@ a, button, select {
     align-items: center;
     justify-content: center;
     padding: 0 10px;
-    border-radius: 7px 0 0 7px !important;
+    border-radius: 12px 0 0 12px !important;
     min-width: max-content !important;
 }
 
@@ -229,7 +229,7 @@ a, button, select {
 }
 
 .table_element thead th {
-    background-color: var(--color-3);
+    background-color: var(--color-2);
     border-radius: 12px;
     color: var(--color-0);
     padding: 5px;
@@ -261,7 +261,7 @@ a, button, select {
 
 .tooltip .tooltip-text {
     visibility: hidden;
-    background-color: var(--color-3);
+    background-color: var(--color-2);
     color: var(--color-0);
     text-align: center;
     border-radius: 12px;

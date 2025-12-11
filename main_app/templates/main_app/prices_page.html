@@ -8,18 +8,14 @@
 {% endblock %}
 
 {% block page_contents_block %}
-    <div class="prices_list_div w_90">
-        {% for key, value in prices_data_dict.items %}
-            <div class="w_100 dir_rtl">
-                <div class="font_Ray_Medium w_100 margin_top_20 categories_name_div">{{ key }}</div>
-            </div>
-            {% for item in value %}
-                <div class="one_price_div w_100">
-                    <div class="font_Ray div_1">{{ item.garbage_item_name }}</div>
-                    <div class="font_Ray text_color_3 div_2">1 {{ item.units_of_measurement_data.unit_name }}</div>
-                    <div class="font_Ray text_color_2 div_3">{{ item.price_per_unit }} تومان</div>
+    <div class="prices_list_div w_90 margin_top_20">
+        {% for garbage in garbage_data %}
+            <a class="one_price_div w_49" href="/prices_details_page/?id={{ garbage.id }}">
+                <div class="garbage_icon_div">
+                    <img src="{{ garbage.garbage_icon.url }}" alt="">
                 </div>
-            {% endfor %}
+                <div class="font_Ray div_1 text_color_1">{{ garbage.garbage_item_name }}</div>
+            </a>
         {% endfor %}
     </div>
 {% endblock %}

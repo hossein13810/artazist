@@ -24,6 +24,8 @@ class EditGarbagePageClass(LoginRequiredMixin, RoleRequiredMixin, View):
         garbage_item_name_input = self.request.POST.get('garbage_item_name_input')
         unit_input = self.request.POST.get('unit_input')
         price_input = self.request.POST.get('price_input')
+        icon_input = self.request.FILES.get('icon_input')
+        image_input = self.request.FILES.get('image_input')
         description_input = self.request.POST.get('description_input')
 
         if GarbageData.objects.filter(garbage_item_name=garbage_item_name_input).exclude(id=garbage_id).exists():
@@ -35,6 +37,10 @@ class EditGarbagePageClass(LoginRequiredMixin, RoleRequiredMixin, View):
             garbage_data.units_of_measurement_data = unit_input
             garbage_data.price_per_unit = price_input
             garbage_data.description = description_input
+            if icon_input:
+                garbage_data.garbage_icon = icon_input
+            if image_input:
+                garbage_data.garbage_image = image_input
             garbage_data.save()
             messages.success(request, 'ویرایش زباله با موفقیت انجام شد')
             return redirect('DataDefinitionGarbagesDataPageClass')

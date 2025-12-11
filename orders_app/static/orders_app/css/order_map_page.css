@@ -67,7 +67,7 @@
     bottom: 60px;
     height: max-content !important;
     width: 100%;
-    background-color: var(--color-0);
+    background-color: var(--color-4);
     border-radius: 12px 12px 0 0;
     z-index: 10;
     transition: 0.3s;
@@ -152,7 +152,7 @@
 }
 
 .one_selected_address {
-    background-color: var(--color-3);
+    background-color: var(--color-2);
     border: none;
     padding: 9px 13px;
     border-radius: 12px;

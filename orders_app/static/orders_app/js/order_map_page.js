@@ -6,7 +6,7 @@ window.addEventListener('load', async function () {
     let next_button = document.getElementById('next_button');
     next_button.disabled = false;
     next_button.classList.remove('disabled_element');
-    next_button.classList.add('background_color_2');
+    next_button.classList.add('background_color_0');
 })
 
 async function load_map_data() {

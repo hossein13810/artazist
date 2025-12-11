@@ -25,7 +25,7 @@
         </div>
         <div class="input_group_div w_48 margin_top_10">
             <label class="font_Ray" for="identification_code_input">کد معرف</label>
-            <input autocomplete="off" type="tel" class="input_element background_color_0 border_0_2 font_Ray w_100 text_color_2 disabled_element" dir="rtl" id="identification_code_input" name="identification_code_input" value="{% if user_data.set_identification_code %}{{ user_data.set_identification_code }}{% endif %}" {% if user_data.set_identification_code %}readonly{% endif %}>
+            <input autocomplete="off" type="tel" class="input_element background_color_0 border_0_2 font_Ray w_100 text_color_2" dir="rtl" id="identification_code_input" name="identification_code_input" value="{% if user_data.set_identification_code %}{{ user_data.set_identification_code }}{% endif %}" {% if user_data.set_identification_code %}readonly{% endif %} {% if not user_data.set_identification_code %}placeholder="خالی"{% endif %}>
         </div>
         <div class="input_group_div w_100 margin_top_10">
             <label class="font_Ray" for="phone_number_input">شماره موبایل</label>
@@ -36,7 +36,7 @@
             <textarea class="input_element background_color_0 border_0_2 font_Ray text_area text_color_2" id="home_address_input" name="home_address_input">{% if user_data.home_address != None %}{{ user_data.home_address }}{% endif %}</textarea>
         </div>
         <div class="w_100 button_group_div margin_top_20">
-            <button class="button_element font_Ray background_color_2 border_none text_color_0 w_100 disabled_element" disabled id="save_button">ذخیره</button>
+            <button class="button_element font_Ray background_color_0 border_none text_color_1 w_100 disabled_element" disabled id="save_button">ذخیره</button>
         </div>
     </form>
 {% endblock %}
