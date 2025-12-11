@@ -10,7 +10,7 @@
 {% block page_contents_block %}
     <div class="prices_list_div w_90 margin_top_20">
         {% for garbage in garbage_data %}
-            <a class="one_price_div w_49" href="/prices_details_page/?id={{ garbage.id }}">
+            <a class="one_price_div w_49" href="/prices_details_page/?id={{ garbage.id }}" onclick="show_loading_div()">
                 <div class="garbage_icon_div">
                     <img src="{{ garbage.garbage_icon.url }}" alt="">
                 </div>
