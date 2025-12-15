@@ -1,0 +1,78 @@
+@font-face {
+    font-family: Delius-Regular;
+    src: url("../../fonts/Delius/Delius-Regular.woff2") format('woff');
+}
+
+@font-face {
+    font-family: DeliusSwashCaps-Regular;
+    src: url("../../fonts/Delius/DeliusSwashCaps-Regular.woff2") format('woff');
+}
+
+@font-face {
+    font-family: Ray;
+    src: url("../../fonts/Ray/Ray.woff2") format('woff');
+}
+
+@font-face {
+    font-family: Ray_Medium;
+    src: url("../../fonts/Ray/Ray-Medium.woff2") format('woff');
+}
+
+@font-face {
+    font-family: Ray_Bold;
+    src: url("../../fonts/Ray/Ray-Bold.woff2") format('woff');
+    font-display: block;
+}
+
+@font-face {
+    font-family: Ray_ExtraBold;
+    src: url("../../fonts/Ray/Ray-ExtraBold.woff2") format('woff');
+}
+
+@font-face {
+    font-family: Ray_Black;
+    src: url("../../fonts/Ray/Ray-Black.woff2") format('woff');
+}
+
+@font-face {
+    font-family: Ray_ExtraBlack;
+    src: url("../../fonts/Ray/Ray-ExtraBlack.woff2") format('woff');
+}
+
+/*-------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+.font_Delius_Regular_main {
+    font-family: Delius-Regular, serif !important;
+}
+
+.font_Delius_Regular {
+    font-family: Delius-Regular, Ray, serif !important;
+}
+
+.font_DeliusSwashCaps_Regular {
+    font-family: DeliusSwashCaps-Regular, Ray, serif !important;
+}
+
+.font_Ray {
+    font-family: Ray, serif !important;
+}
+
+.font_Ray_Medium {
+    font-family: Ray_Medium, serif !important;
+}
+
+.font_Ray_Bold {
+    font-family: Ray_Bold, serif !important;
+}
+
+.font_Ray_ExtraBold {
+    font-family: Ray_ExtraBold, serif !important;
+}
+
+.font_Ray_Black {
+    font-family: Ray_Black, serif !important;
+}
+
+.font_Ray_ExtraBlack {
+    font-family: Ray_ExtraBlack, serif !important;
+}

@@ -1,0 +1,46 @@
+{% extends 'admin_panel_app/base_page.html' %}
+{% load static %}
+
+{% block page_headers_block %}
+    <link rel="stylesheet" href="{% static 'admin_panel_app/css/send_message_page.css' %}">
+    <script src="{% static 'admin_panel_app/js/send_message_page.js' %}"></script>
+{% endblock %}
+
+{% block page_title_block %}ارسال پیغام{% endblock %}
+{% block page_name_block %}ارسال پیغام{% endblock %}
+
+{% block page_contents_block %}
+    <div class="inputs_div w_90" id="inputs_div">
+        <div class="input_group_div w_100 margin_top_20">
+            <label class="text_color_1 font_Ray" for="users_list_select">کاربران:</label>
+            <select class="input_element text_color_1 border_0_2 font_Ray cursor_pointer" id="users_list_select" multiple="multiple">
+                <option value="">همه</option>
+                {% for user in users_list %}
+                    <option>{{ user.user_firstname }} {{ user.user_lastname }} - 0{{ user.phone_number }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="input_group_div w_100 margin_top_20">
+            <label class="text_color_1 font_Ray" for="message_text_input">متن پیام:</label>
+            <textarea class="input_element text_color_1 border_0_2 font_Ray message_text_input" id="message_text_input" required autocomplete="off"></textarea>
+        </div>
+        <div class="input_group_div w_100 margin_top_20">
+            <span class="text_color_1 font_Ray">نوع ارسال:</span>
+            <div class="check_input_div border_0_2 background_color_0">
+                <label class="font_Ray cursor_pointer" for="send_mode_notif_input">نوتیفیکیشن</label><input class="cursor_pointer" type="checkbox" id="send_mode_notif_input" checked>
+            </div>
+        </div>
+        <div class="button_group_div margin_top_20">
+            <button class="button_element background_color_2 border_none text_color_0 font_Ray" onclick="start_send_messages()">ارسال</button>
+        </div>
+    </div>
+    <div class="logger_div w_90 display_none" id="logger_div">
+        <div class="input_group_div w_100 margin_top_20">
+            <span class="font_Ray">وضعیت ارسالی:</span>
+            <div class="logger_text_area input_element text_color_1 border_0_2 font_Ray w_100 background_color_0" id="logger_text_area"></div>
+        </div>
+        <div class="button_group_div margin_top_20">
+            <button class="button_element background_color_2 border_none text_color_0 font_Ray" onclick="window.location.reload()">بازگشت</button>
+        </div>
+    </div>
+{% endblock %}

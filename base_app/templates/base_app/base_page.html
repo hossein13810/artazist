@@ -1,0 +1,123 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block page_title %}{% endblock %}</title>
+    <link rel="preload" href="{% static 'base_app/fonts/Ray/Ray.woff2' %}" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="{% static 'base_app/fonts/Ray/Ray-Medium.woff2' %}" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="{% static 'base_app/fonts/Ray/Ray-Bold.woff2' %}" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="{% static 'base_app/fonts/Ray/Ray-ExtraBold.woff2' %}" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="{% static 'base_app/fonts/Ray/Ray-Black.woff2' %}" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="{% static 'base_app/fonts/Ray/Ray-ExtraBlack.woff2' %}" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="{% static 'base_app/css/base/fonts.css' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'base_app/icons/artazist.ico' %}">
+    <link rel="stylesheet" href="{% static 'base_app/css/base/elements.css' %}">
+    <link rel="stylesheet" href="{% static 'base_app/css/base/bootstrap_icons.css' %}">
+    <link rel="stylesheet" href="{% static 'base_app/css/base/colors.css' %}">
+    <link rel="stylesheet" href="{% static 'base_app/css/base/sizes.css' %}">
+    <link rel="stylesheet" href="{% static 'base_app/css/base/borders.css' %}">
+    <link rel="stylesheet" href="{% static 'base_app/css/base/margins.css' %}">
+    <link rel="stylesheet" href="{% static 'base_app/css/base_page.css' %}">
+    <link rel="stylesheet" href="{% static 'base_app/css/select2.css' %}">
+    <script src="{% static 'base_app/js/base_page.js' %}"></script>
+    <script src="{% static 'base_app/js/jquery.js' %}"></script>
+    <script src="{% static 'base_app/js/select2.js' %}"></script>
+    {% block page_headers_div %}{% endblock %}
+</head>
+<body>
+
+<div class="page_main_div">
+    <div class="menu_back_div" id="menu_back_div" onclick="show_hide_menu('hide')"></div>
+    <div class="menu_div" id="menu_div">
+        <div class="close_button_div">
+            <button class="close_button text_color_0 button_element" id="close_button" onclick="show_hide_menu('hide')"><i class="bi bi-x-square-fill"></i></button>
+        </div>
+        <div class="menu_icon_div margin_top_20 margin_bottom_20">
+            <img src="{% static 'base_app/images/artazist_transparent.png' %}" alt="">
+        </div>
+        <h2 class="text_color_1 font_Ray_ExtraBold margin_0 font_22px">آرتا زیست پلاس</h2>
+        <div class="margin_top_20"></div>
+        <h4 class="text_color_2 font_Ray_Bold margin_0">{{ user_fullname }}</h4>
+        <span class="text_color_3 font_Ray_Bold font_12px dir_rtl margin_top_10">موجودی کیف پول:</span>
+        <span class="text_color_2 font_Ray_Bold font_12px dir_rtl">{{ user_inventory }} تومان</span>
+        <div class="menu_links_div margin_top_20">
+            <a class="button_element font_Ray background_color_0 text_color_1" href="/main_page/" id="main_page_menu_link" onclick="show_loading_div()"><i class="bi bi-house margin_left_10"></i>خانه</a>
+            <a class="button_element font_Ray background_color_0 text_color_1 margin_top_10" href="/my_orders_history_page/" id="my_orders_history_page_menu_link" onclick="show_loading_div()"><i class="bi bi-collection margin_left_10"></i>سوابق</a>
+            <a class="button_element font_Ray background_color_0 text_color_1 margin_top_10" href="/prices_page/" id="prices_page_menu_link" onclick="show_loading_div()"><i class="bi bi-view-list margin_left_10"></i>قیمت ها</a>
+            <a class="button_element font_Ray background_color_0 text_color_1 margin_top_10" href="/wallet_page/" id="wallet_page_menu_link" onclick="show_loading_div()"><i class="bi bi-wallet2 margin_left_10"></i>کیف پول</a>
+            <a class="button_element font_Ray background_color_0 text_color_1 margin_top_10" href="/account_settings_page/" id="account_settings_page_menu_link" onclick="show_loading_div()"><i class="bi bi-gear margin_left_10"></i>تنظیمات حساب کاربری</a>
+            <a class="button_element font_Ray background_color_0 text_color_1 margin_top_10" href="/about_us_page/" id="about_us_page_menu_link" onclick="show_loading_div()"><i class="bi bi-info-circle margin_left_10"></i>درباره ما</a>
+            <a class="button_element font_Ray background_color_0 text_color_1 margin_top_10" href="/selected_address_page/" id="selected_address_page_menu_link" onclick="show_loading_div()"><i class="bi bi-map margin_left_10"></i>آدرس های منتخب</a>
+            <a class="button_element font_Ray background_color_0 text_color_1 margin_top_10" href="/logout/" onclick="show_loading_div()"><i class="bi bi-box-arrow-right margin_left_10"></i>خروج از حساب</a>
+        </div>
+    </div>
+    <div class="page_top_div">
+        <div class="top_icon_div">
+            <img src="{% static 'base_app/images/artazist_transparent.png' %}" alt="">
+        </div>
+        <div class="page_data_div">
+            <div class="back_button_div">
+                <button class="menu_button text_color_0" onclick="show_hide_menu('show')"><i class="bi bi-list"></i></button>
+            </div>
+            <div class="user_info_div">
+                <h1 class="font_Ray_Bold"><a class="profile_link" href="/account_settings_page/" onclick="show_loading_div()">پروفایل<i class="bi bi-person-fill"></i></a></h1>
+            </div>
+        </div>
+        <div class="back_button_div">
+            {% block back_button_block %}{% endblock %}
+        </div>
+    </div>
+    <div class="page_contents_div">
+        {% block page_contents_block %}{% endblock %}
+    </div>
+    <div class="page_bottom_div">
+        <a href="/main_page/" onclick="show_loading_div()">
+            <div class="one_page_bottom_link text_color_0_3" id="main_page_bottom_link">
+                <i class="bi bi-house"></i>
+                <div class="font_Ray">خانه</div>
+            </div>
+        </a>
+        <a href="/my_orders_history_page/" onclick="show_loading_div()">
+            <div class="one_page_bottom_link text_color_0_3" id="my_orders_history_page_bottom_link">
+                <i class="bi bi-collection"></i>
+                <div class="font_Ray">سوابق</div>
+            </div>
+        </a>
+        <a href="/prices_page/" onclick="show_loading_div()">
+            <div class="one_page_bottom_link text_color_0_3" id="prices_page_bottom_link">
+                <i class="bi bi-view-list"></i>
+                <div class="font_Ray">قیمت ها</div>
+            </div>
+        </a>
+        <a href="/wallet_page/" onclick="show_loading_div()">
+            <div class="one_page_bottom_link text_color_0_3" id="wallet_page_bottom_link">
+                <i class="bi bi-wallet2"></i>
+                <div class="font_Ray">کیف پول</div>
+            </div>
+        </a>
+        <a href="/about_us_page/" onclick="show_loading_div()">
+            <div class="one_page_bottom_link text_color_0_3" id="about_us_page_bottom_link">
+                <i class="bi bi-info-circle"></i>
+                <div class="font_Ray">درباره ما</div>
+            </div>
+        </a>
+    </div>
+</div>
+
+<div class="popup_back_div display_none" id="popup_back_div" onclick="show_hide_popup('hide')"></div>
+<div class="popup_div" id="popup_div"></div>
+
+{% if messages %}
+    {% for msg in messages %}
+        <div id="message_div" class="message_div font_Ray dir_rtl message_{{ msg.tags }}">{{ msg }}</div>
+    {% endfor %}
+{% endif %}
+
+<div class="loading_div" id="loading_div">
+    <span class="loader"></span>
+</div>
+
+</body>
+</html>

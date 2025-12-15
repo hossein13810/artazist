@@ -1,0 +1,45 @@
+{% extends 'admin_panel_app/base_page.html' %}
+{% load static %}
+
+{% block page_headers_block %}
+    <link rel="stylesheet" href="{% static 'admin_panel_app/css/edit_garbage_page.css' %}">
+    <script src="{% static 'admin_panel_app/js/edit_garbage_page.js' %}"></script>
+{% endblock %}
+
+{% block page_title_block %}ویرایش زباله{% endblock %}
+{% block page_name_block %}ویرایش زباله{% endblock %}
+
+{% block page_contents_block %}
+    <form class="inputs_div w_90" action="/edit_garbage_page/" method="post" id="inputs_form" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="hidden" name="garbage_id" value="{{ garbage_data.id }}">
+        <div class="input_group_div w_100 margin_top_20">
+            <label class="text_color_1 font_Ray" for="garbage_item_name_input">آیتم زباله:</label>
+            <input class="input_element text_color_1 border_0_2 font_Ray" id="garbage_item_name_input" dir="auto" name="garbage_item_name_input" required autocomplete="off" value="{{ garbage_data.garbage_item_name }}">
+        </div>
+        <div class="input_group_div w_49 margin_top_20">
+            <label class="text_color_1 font_Ray" for="unit_input">واحد اندازه گیری:</label>
+            <input class="input_element text_color_1 border_0_2 font_Ray" id="unit_input" dir="auto" name="unit_input" required autocomplete="off" value="{{ garbage_data.units_of_measurement_data }}">
+        </div>
+        <div class="input_group_div w_49 margin_top_20">
+            <label class="text_color_1 font_Ray" for="price_input">قیمت هر واحد: (تومان)</label>
+            <input class="input_element text_color_1 border_0_2 font_Ray" id="price_input" type="number" dir="auto" name="price_input" required autocomplete="off" value="{{ garbage_data.price_per_unit }}">
+        </div>
+        <div class="input_group_div w_49 margin_top_20">
+            <label class="text_color_1 font_Ray" for="icon_input">آیکون زباله</label>
+            <input class="input_element text_color_1 border_0_2 font_Ray" id="icon_input" type="file" dir="auto" name="icon_input" autocomplete="off">
+        </div>
+        <div class="input_group_div w_49 margin_top_20">
+            <label class="text_color_1 font_Ray" for="image_input">تصویر زباله</label>
+            <input class="input_element text_color_1 border_0_2 font_Ray" id="image_input" type="file" dir="auto" name="image_input" autocomplete="off">
+        </div>
+        <div class="input_group_div w_100 margin_top_20">
+            <label class="text_color_1 font_Ray" for="description_input">توضیحات:</label>
+            <textarea class="input_element text_color_1 border_0_2 font_Ray message_text_input" dir="auto" id="description_input" name="description_input" required autocomplete="off">{{ garbage_data.description }}</textarea>
+        </div>
+        <div class="button_group_div margin_top_20 w_100 dir_ltr">
+            <button class="button_element background_color_2 border_none text_color_0 font_Ray">ذخیره</button>
+            <button type="button" class="button_element background_color_0_2 border_none text_color_1 font_Ray margin_left_20" onclick="delete_garbage_popup('{{ garbage_data.id }}')">حذف زباله</button>
+        </div>
+    </form>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'admin_panel_app/base_page.html' %}
+{% load static %}
+
+{% block page_headers_block %}
+    <link rel="stylesheet" href="{% static 'admin_panel_app/css/orders_list_page.css' %}">
+    <link
+            rel="preload"
+            href="https://static.neshan.org/sdk/leaflet/v1.9.4/neshan-sdk/v1.0.8/index.css"
+            as="style"
+            onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link
+                rel="stylesheet"
+                href="https://static.neshan.org/sdk/leaflet/v1.9.4/neshan-sdk/v1.0.8/index.css">
+    </noscript>
+    <script
+            src="https://static.neshan.org/sdk/leaflet/v1.9.4/neshan-sdk/v1.0.8/index.js"
+            defer>
+    </script>
+    <script src="{% static 'admin_panel_app/js/orders_list_page.js' %}"></script>
+{% endblock %}
+
+{% block page_title_block %}لیست درخواست ها{% endblock %}
+{% block page_name_block %}لیست درخواست ها{% endblock %}
+
+{% block page_contents_block %}
+    <input type="hidden" value="{{ write_orders_list_page }}" id="write_orders_list_page_input">
+    <div class="table_header_div w_90">
+        <div class="h_max w_100">
+            <div class="map_main_div">موقعیت مکانی</div>
+            <div>کد پیگیری</div>
+            <div>نام و نام خانوادگی</div>
+            <div>شماره موبایل</div>
+            <div>تاریخ ثبت</div>
+            <div>بازه زمانی</div>
+            <div class="margin_left_10">وضعیت</div>
+        </div>
+    </div>
+    <div class="orders_list_div w_100 margin_top_20" id="orders_list_div"></div>
+{% endblock %}

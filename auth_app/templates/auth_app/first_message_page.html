@@ -1,0 +1,75 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>صفحه ورود</title>
+    <link rel="icon" type="image/x-icon" href="{% static 'base_app/icons/artazist.ico' %}">
+    <link rel="stylesheet" href="{% static 'base_app/css/base_page.css' %}">
+    <link rel="stylesheet" href="{% static 'base_app/css/base/borders.css' %}">
+    <link rel="stylesheet" href="{% static 'base_app/css/base/margins.css' %}">
+    <link rel="stylesheet" href="{% static 'base_app/css/base/elements.css' %}">
+    <link rel="stylesheet" href="{% static 'auth_app/css/first_message_page.css' %}">
+    <link rel="stylesheet" href="{% static 'base_app/css/base/colors.css' %}">
+    <link rel="stylesheet" href="{% static 'base_app/css/base/fonts.css' %}">
+    <link rel="stylesheet" href="{% static 'base_app/css/base/bootstrap_icons.css' %}">
+    <script src="{% static 'base_app/js/base_page.js' %}"></script>
+    <script src="{% static 'auth_app/js/first_message_page.js' %}"></script>
+</head>
+<body>
+
+<div class="first_message_div">
+    <div class="icon_div">
+        <img src="{% static 'base_app/images/artazist_transparent.png' %}" alt="">
+    </div>
+    <div class="slider_div" id="slider_div">
+        <div class="one_slide_div active" id="slide_1">
+            <div class="image_div">
+                <img src="{% static 'auth_app/images/1.png' %}" alt="">
+            </div>
+            <h3 class="text_color_1 font_Ray_Black dir_rtl">به آرتازیست پلاس خوش اومدین!</h3>
+            <span class="text_color_1 font_Ray_Bold">آرتازیست سامانه هوشمند جمع آوری و مدیریت پسماند</span>
+        </div>
+        <div class="one_slide_div" id="slide_2">
+            <div class="image_div">
+                <img src="{% static 'auth_app/images/2.png' %}" alt="">
+            </div>
+            <h3 class="text_color_1 font_Ray_Black dir_rtl">با تفکیک زباله، زمین رو نجات بدیم!</h3>
+            <span class="text_color_1 font_Ray_Bold">هر قدم کوچک ما، قدمی بزرگ برای سلامت زمین است</span>
+        </div>
+        <div class="one_slide_div" id="slide_3">
+            <div class="image_div">
+                <img src="{% static 'auth_app/images/3.png' %}" alt="">
+            </div>
+            <h3 class="text_color_1 font_Ray_Black dir_rtl">به طبیعت کمک کنیم!</h3>
+            <span class="text_color_1 font_Ray_Bold">با تفکیک و بازیافت به زمین کمک بزرگی میکنین</span>
+        </div>
+        <div class="one_slide_div" id="slide_4">
+            <div class="image_div">
+                <img src="{% static 'auth_app/images/4.png' %}" alt="">
+            </div>
+            <h3 class="text_color_1 font_Ray_Black dir_rtl">پولمون رو نقد کنیم!</h3>
+            <span class="text_color_1 font_Ray_Bold">با شماره شبا، اعتبارمون به حساب بانکیمون میشینه</span>
+        </div>
+    </div>
+
+    <div class="circles_div">
+        <span class="one_circle_span on_circle" id="span_1"></span>
+        <span class="one_circle_span" id="span_2"></span>
+        <span class="one_circle_span" id="span_3"></span>
+        <span class="one_circle_span" id="span_4"></span>
+    </div>
+    <div class="button_group_div">
+        <a class="button_element font_Ray background_color_0 border_none text_color_1" onclick="next_slide()" id="next_link">بعدی<i class="bi bi-arrow-left-short"></i></a>
+        <a class="button_element font_Ray background_color_0 border_none text_color_1 display_none" onclick="show_loading_div()" href="/login_page/" id="start_link">شروع</a>
+    </div>
+    <div class="text_color_0_2 font_Ray font_12px margin_top_20">نسخه 1.1.1</div>
+</div>
+
+<div class="loading_div" id="loading_div">
+    <span class="loader"></span>
+</div>
+
+</body>
+</html>

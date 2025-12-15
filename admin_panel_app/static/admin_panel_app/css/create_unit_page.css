@@ -1,0 +1,30 @@
+.page_contents_div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.inputs_div {
+    width: 90%;
+    max-height: 95%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    flex-direction: row-reverse;
+}
+
+.check_input_div {
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+    padding: 7px 5px;
+    box-sizing: border-box;
+    border-radius: 12px;
+    justify-content: flex-end;
+}
+
+.message_text_input {
+    height: 150px;
+}

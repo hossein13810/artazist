@@ -1,0 +1,36 @@
+{% extends 'base_app/base_page.html' %}
+{% load static %}
+
+{% block page_title %}درباره ما{% endblock %}
+
+{% block page_headers_div %}
+    <link rel="stylesheet" href="{% static 'main_app/css/about_us_page.css' %}">
+{% endblock %}
+
+{% block page_contents_block %}
+    <div class="title_div font_Ray_ExtraBlack margin_top_50 w_80">درباره ما</div>
+    <div class="top_data_div">
+        <div class="font_Ray_Black">شرکت همیاران امین کار ارس</div>
+        <div class="icon_div margin_top_20 margin_bottom_20">
+            <img src="{% static 'base_app/images/artazist_transparent.png' %}" alt="">
+        </div>
+    </div>
+    <p class="text_color_1 font_Ray w_80 dir_rtl text_align_justify text_p">شرکت <span class="font_Ray_ExtraBold">همیاران امین کار ارس</span> با تمرکز بر بهبود فرآیند مدیریت پسماند و ضایعات خشک، فعالیت خود را با بهره‌گیری از سیستم‌های نوین و هوشمند آغاز کرده است. ما با اتکا به فناوری‌های روز و استانداردهای حرفه‌ای، تلاش می‌کنیم فرآیند جمع‌آوری، تفکیک و بازیافت را برای شهروندان ساده‌تر، سریع‌تر و کارآمدتر سازیم. این مجموعه با همکاری رسمی شهرداری اردبیل و سازمان پسماند شهرداری در مسیر ارتقای کیفیت محیط زیست شهری گام برمی‌دارد و با ایجاد سازوکارهای هوشمند، خدماتی دقیق، شفاف و مطمئن را به شهروندان ارائه می‌دهد.</p>
+
+    <div class="font_Ray_Black dir_rtl w_80">ماموریت ما</div>
+    <p class="text_color_1 font_Ray w_80 dir_rtl text_align_justify text_p margin_0">- توسعه و به‌کارگیری راهکارهای هوشمند برای جمع‌آوری پسماند خشک</p>
+    <p class="text_color_1 font_Ray w_80 dir_rtl text_align_justify text_p margin_0">- افزایش مشارکت شهروندان در تفکیک از مبدأ</p>
+    <p class="text_color_1 font_Ray w_80 dir_rtl text_align_justify text_p margin_0">- کاهش حجم زباله‌های دفنی و حفاظت از محیط زیست</p>
+    <p class="text_color_1 font_Ray w_80 dir_rtl text_align_justify text_p margin_0">- ایجاد شبکه‌ای پایدار، منظم و هوشمند در حوزه مدیریت پسماند</p>
+
+    <div class="font_Ray_Black dir_rtl w_80 margin_top_20">چشم انداز ما</div>
+    <p class="text_color_1 font_Ray w_80 dir_rtl text_align_justify text_p margin_0">شرکت همیاران امین کار ارس در تلاش است با گسترش زیرساخت‌های هوشمند و ارتقای فرهنگ زیست‌محیطی، به یکی از الگوهای موفق مدیریت نوین پسماند در کشور تبدیل شود و زمینه‌ساز شهری پاک، پویا و آینده‌نگر باشد.</p>
+
+    <div class="font_Ray_Black dir_rtl w_80 margin_top_20">شعار ما</div>
+    <p class="text_color_1 font_Ray w_80 dir_rtl text_align_justify text_p margin_0">«با هم دیگه به سمت اردبیلی پاک و رویایی»</p>
+
+    <div class="team_data_div">
+        <div class="font_Ray text_color_0_2">نسخه 1.1.1</div>
+        <span class="font_Ray text_color_0_2">طراحی و توسعه: <a class="text_color_0_2" target="_blank" href="https://ybrand.ir/">Brand Team</a></span>
+    </div>
+{% endblock %}

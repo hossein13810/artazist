@@ -1,0 +1,42 @@
+{% extends 'admin_panel_app/base_page.html' %}
+{% load static %}
+
+{% block page_headers_block %}
+    <link rel="stylesheet" href="{% static 'admin_panel_app/css/users_list_page.css' %}">
+{% endblock %}
+
+{% block page_title_block %}لیست کاربران{% endblock %}
+{% block page_name_block %}لیست کاربران{% endblock %}
+
+{% block page_contents_block %}
+    <div class="orders_list_div w_90 margin_top_20">
+        <table class="table_element text_align_center font_Ray w_100 dir_rtl">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>نام و نام خانوادگی</th>
+                <th>شماره موبایل</th>
+                <th>کد ملی</th>
+                <th>موجودی کیف پول</th>
+                <th>شماره شبا</th>
+                <th>تعداد درخواست جمع آوری</th>
+                <th>تعداد درخواست برداشت مالی</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for user in users_list %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ user.user_firstname }} {{ user.user_lastname }}</td>
+                    <td>{{ user.phone_number }}</td>
+                    <td>{{ user.national_code }}</td>
+                    <td>{{ user.wallet_inventory }}</td>
+                    <td>{{ user.wallet_sheba_number }}</td>
+                    <td>{{ user.orders_count }}</td>
+                    <td>{{ user.withdrawals_count }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

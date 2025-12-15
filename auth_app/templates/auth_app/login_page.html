@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>صفحه ورود</title>
+    <link rel="icon" type="image/x-icon" href="{% static 'base_app/icons/artazist.ico' %}">
+    <link rel="stylesheet" href="{% static 'base_app/css/base_page.css' %}">
+    <link rel="stylesheet" href="{% static 'base_app/css/base/elements.css' %}">
+    <link rel="stylesheet" href="{% static 'auth_app/css/login_page.css' %}">
+    <link rel="stylesheet" href="{% static 'base_app/css/base/colors.css' %}">
+    <link rel="stylesheet" href="{% static 'base_app/css/base/fonts.css' %}">
+    <link rel="stylesheet" href="{% static 'base_app/css/base/sizes.css' %}">
+    <link rel="stylesheet" href="{% static 'base_app/css/base/borders.css' %}">
+    <link rel="stylesheet" href="{% static 'base_app/css/base/margins.css' %}">
+    <link rel="stylesheet" href="{% static 'base_app/css/base/bootstrap_icons.css' %}">
+    <script src="{% static 'auth_app/js/login_page.js' %}"></script>
+    <script src="{% static 'base_app/js/base_page.js' %}"></script>
+</head>
+<body>
+
+<div class="login_div">
+    <div class="icon_div">
+        <img src="{% static 'base_app/images/artazist_transparent.png' %}" alt="">
+    </div>
+    <form action="/register/" method="post" class="w_100 login_form" id="login_form">
+        {% csrf_token %}
+        <div class="input_group_div w_100 margin_top_10">
+            <label class="font_Ray_ExtraBold font_22px" for="phone_number_input">شماره همراه</label>
+            <label class="font_Ray" for="phone_number_input">شماره موبایلتون رو برای دریافت کد تایید وارد کنین.</label>
+            <input autocomplete="off" type="tel" class="input_element background_color_0_4 border_0_2 font_Ray w_100" dir="auto" id="phone_number_input" name="phone_number_input" onkeyup="check_input()">
+        </div>
+        <div class="w_100 button_group_div margin_top_20">
+            <button class="button_element font_Ray border_none text_color_1 w_100 disabled_element" id="next_button" onclick="show_loading_div()" disabled>ارسال کد تایید<i class="bi bi-arrow-left-short"></i></button>
+        </div>
+
+        <div class="support_phone_div w_100 text_align_center margin_top_20">
+            <span class="text_color_1 font_Ray">تماس با پشتیبانی: <span class="text_color_3">04533854784</span></span>
+        </div>
+    </form>
+</div>
+
+{% if messages %}
+    {% for msg in messages %}
+        <div id="message_div" class="message_div font_Ray dir_rtl message_{{ msg.tags }}">{{ msg }}</div>
+    {% endfor %}
+{% endif %}
+
+<div class="loading_div" id="loading_div">
+    <span class="loader"></span>
+</div>
+
+</body>
+</html>

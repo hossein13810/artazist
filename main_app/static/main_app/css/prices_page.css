@@ -1,0 +1,40 @@
+.prices_list_div {
+    flex: 1;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: flex-start;
+    flex-direction: row-reverse;
+}
+
+.one_price_div {
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    direction: rtl;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-0);
+    box-shadow: 0 0 0.5em var(--color-0-3);
+    border: 1px solid var(--color-0-2);
+    position: relative;
+    padding: 10px 20px;
+    height: 150px;
+}
+
+.garbage_icon_div {
+    width: 70px;
+    height: 70px;
+    margin-bottom: 10px;
+}
+
+.garbage_icon_div img {
+    width: 100%;
+    height: 100%;
+}
+
+.div_1 {
+    font-size: 20px !important;
+}

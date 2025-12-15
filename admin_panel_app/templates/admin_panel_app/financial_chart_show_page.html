@@ -1,0 +1,38 @@
+{% extends 'admin_panel_app/base_page.html' %}
+{% load static %}
+
+{% block page_headers_block %}
+    <link rel="stylesheet" href="{% static 'admin_panel_app/css/financial_chart_show_page.css' %}">
+    <script src="{% static 'admin_panel_app/js/financial_chart_show_page.js' %}"></script>
+
+    <script src="{% static 'admin_panel_app/js/chart.js' %}"></script>
+
+    <link rel="stylesheet" href="{% static 'base_app/css/persian_date_picker/persian_date_picker.css' %}">
+    <script src="{% static 'base_app/js/persian_date_picker/persian_date.js' %}"></script>
+    <script src="{% static 'base_app/js/persian_date_picker/persian_date_picker.js' %}"></script>
+{% endblock %}
+
+{% block page_title_block %}نمودار درخواست های مالی{% endblock %}
+{% block page_name_block %}نمودار درخواست های مالی{% endblock %}
+
+{% block page_contents_block %}
+    <div class="options_div">
+        <div class="margin_right_30 date_input_div">
+            <label class="font_Ray" for="from_date_input">از تاریخ:</label>
+            <input class="input_element font_Ray background_color_0_4 border_0_2 cursor_pointer" dir="rtl" readonly id="from_date_input" placeholder="انتخاب تاریخ">
+        </div>
+        <div class="margin_right_20 date_input_div">
+            <label class="font_Ray" for="to_date_input">تا تاریخ:</label>
+            <input class="input_element font_Ray background_color_0_4 border_0_2 cursor_pointer" dir="rtl" readonly id="to_date_input" placeholder="انتخاب تاریخ">
+        </div>
+    </div>
+    <div class="charts_div">
+        <div class="circle_chart_div">
+            <canvas id="myPieChart"></canvas>
+        </div>
+        <div class="bar_chart_div">
+            <canvas id="myBarChart"></canvas>
+        </div>
+    </div>
+
+{% endblock %}

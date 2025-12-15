@@ -1,0 +1,45 @@
+{% extends 'admin_panel_app/base_page.html' %}
+{% load static %}
+
+{% block page_headers_block %}
+    <link rel="stylesheet" href="{% static 'admin_panel_app/css/users_list_page.css' %}">
+{% endblock %}
+
+{% block page_title_block %}لیست مدیران{% endblock %}
+{% block page_name_block %}لیست مدیران{% endblock %}
+
+{% block page_contents_block %}
+    <div class="orders_list_div w_90 margin_top_20">
+        <table class="table_element text_align_center font_Ray w_100 dir_rtl">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>نام و نام خانوادگی</th>
+                <th>شماره موبایل</th>
+                <th>کد ملی</th>
+                {% if write_admins_list_page %}
+                    <th>جزئیات</th>
+                {% endif %}
+            </tr>
+            </thead>
+            <tbody>
+            {% for user in admins_list %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ user.user_firstname }} {{ user.user_lastname }}</td>
+                    <td>{{ user.phone_number }}</td>
+                    <td>{{ user.national_code }}</td>
+                    {% if write_admins_list_page %}
+                        <td><a class="show_button cursor_pointer" href="/edit_admin_page/?user_id={{ user.id }}"><i class="bi bi-eye-fill"></i></a></td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        {% if admins_list|length < 7 and write_admins_list_page %}
+            <div class="button_group_div margin_top_20">
+                <a class="button_element background_color_2 text_color_0 font_Ray" href="/create_admin_page/">مدیر جدید</a>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

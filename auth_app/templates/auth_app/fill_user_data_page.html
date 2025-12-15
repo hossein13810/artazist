@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>صفحه ورود</title>
+    <link rel="icon" type="image/x-icon" href="{% static 'base_app/icons/artazist.ico' %}">
+    <link rel="stylesheet" href="{% static 'base_app/css/base_page.css' %}">
+    <link rel="stylesheet" href="{% static 'base_app/css/base/elements.css' %}">
+    <link rel="stylesheet" href="{% static 'base_app/css/base/colors.css' %}">
+    <link rel="stylesheet" href="{% static 'base_app/css/base/fonts.css' %}">
+    <link rel="stylesheet" href="{% static 'base_app/css/base/sizes.css' %}">
+    <link rel="stylesheet" href="{% static 'base_app/css/base/borders.css' %}">
+    <link rel="stylesheet" href="{% static 'base_app/css/base/margins.css' %}">
+    <link rel="stylesheet" href="{% static 'auth_app/css/fill_user_data_page.css' %}">
+    <script src="{% static 'base_app/js/base_page.js' %}"></script>
+    <script src="{% static 'auth_app/js/fill_user_data_page.js' %}"></script>
+</head>
+<body>
+
+<div class="login_div">
+    <div class="menu_icon_div margin_top_20 margin_bottom_20">
+        <img src="{% static 'base_app/images/artazist_normal.jpg' %}" alt="">
+    </div>
+    <h3 class="font_Ray_Bold">فرم ایجاد حساب</h3>
+    <form action="/fill_user_data_page/" method="post" class="form_1">
+        {% csrf_token %}
+        <div class="input_group_div w_48 margin_top_10">
+            <label class="font_Ray" for="firstname_input">نام:<span class="text_color_error">*</span></label>
+            <input autocomplete="off" type="text" class="input_element background_color_0 border_0_2 font_Ray w_100" dir="auto" id="firstname_input" name="firstname_input" onkeyup="check_inputs()">
+        </div>
+        <div class="input_group_div w_48 margin_top_10">
+            <label class="font_Ray" for="lastname_input">نام خانوادگی:<span class="text_color_error">*</span></label>
+            <input autocomplete="off" type="text" class="input_element background_color_0 border_0_2 font_Ray w_100" dir="auto" id="lastname_input" name="lastname_input" onkeyup="check_inputs()">
+        </div>
+        <div class="input_group_div w_100 margin_top_10">
+            <label class="font_Ray" for="national_code_input">کد ملی:<span class="text_color_error">*</span></label>
+            <input autocomplete="off" type="tel" class="input_element background_color_0 border_0_2 font_Ray w_100" dir="auto" id="national_code_input" name="national_code_input" onkeyup="check_inputs()">
+        </div>
+        <div class="w_100 button_group_div margin_top_20">
+            <button class="button_element font_Ray background_color_2 border_none text_color_0 w_100 disabled_element" disabled id="save_button">ذخیره</button>
+        </div>
+    </form>
+</div>
+
+{% if messages %}
+    {% for msg in messages %}
+        <div id="message_div" class="message_div font_Ray dir_rtl message_{{ msg.tags }}">{{ msg }}</div>
+    {% endfor %}
+{% endif %}
+
+</body>
+</html>

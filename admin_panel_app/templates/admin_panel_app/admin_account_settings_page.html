@@ -1,0 +1,44 @@
+{% extends 'admin_panel_app/base_page.html' %}
+{% load static %}
+
+{% block page_headers_block %}
+    <link rel="stylesheet" href="{% static 'admin_panel_app/css/admin_account_settings_page.css' %}">
+    <script src="{% static 'admin_panel_app/js/admin_account_settings_page.js' %}"></script>
+{% endblock %}
+
+{% block page_title_block %}تنظیمات حساب کاربری{% endblock %}
+{% block page_name_block %}تنظیمات حساب کاربری{% endblock %}
+
+{% block page_contents_block %}
+    <form class="inputs_div w_90" action="/admin_account_settings_page/" method="post" id="inputs_form">
+        {% csrf_token %}
+        <div class="input_group_div w_48 margin_top_20">
+            <label class="text_color_1 font_Ray" for="firstname_input">نام:</label>
+            <input class="input_element text_color_1 border_0_2 font_Ray" id="firstname_input" dir="auto" name="firstname_input" required autocomplete="off" value="{{ user_data.user_firstname }}" onkeyup="check_inputs()">
+        </div>
+        <div class="input_group_div w_48 margin_top_20">
+            <label class="text_color_1 font_Ray" for="lastname_input">نام خانوادگی:</label>
+            <input class="input_element text_color_1 border_0_2 font_Ray" id="lastname_input" dir="auto" name="lastname_input" required autocomplete="off" value="{{ user_data.user_lastname }}" onkeyup="check_inputs()">
+        </div>
+        <div class="input_group_div w_48 margin_top_20">
+            <label class="text_color_1 font_Ray" for="phone_number_input">شماره موبایل: (نام کاربری)</label>
+            <input autocomplete="off" type="tel" class="input_element background_color_0 border_0_2 font_Ray w_100" dir="auto" id="phone_number_input" name="phone_number_input" readonly value="{{ user_data.phone_number }}" onkeyup="check_inputs()">
+        </div>
+        <div class="input_group_div w_48 margin_top_20">
+            <label class="text_color_1 font_Ray" for="national_code_input">کد ملی:</label>
+            <input class="input_element text_color_1 border_0_2 font_Ray" id="national_code_input" dir="auto" name="national_code_input" readonly autocomplete="off" value="{{ user_data.national_code }}" onkeyup="check_inputs()">
+        </div>
+        <div class="input_group_div w_48 margin_top_20">
+            <label class="text_color_1 font_Ray" for="password_input">رمز عبور:</label>
+            <input type="password" class="input_element text_color_1 border_0_2 font_Ray" id="password_input" name="password_input" autocomplete="off" onkeyup="check_inputs()">
+        </div>
+        <div class="input_group_div w_48 margin_top_20">
+            <label class="text_color_1 font_Ray" for="re_password_input">تکرار رمز عبور:</label>
+            <input type="password" class="input_element text_color_1 border_0_2 font_Ray" id="re_password_input" name="re_password_input" autocomplete="off" onkeyup="check_inputs()">
+        </div>
+        <div class="button_group_div margin_top_20 w_100 dir_ltr">
+            <button class="button_element background_color_2 border_none text_color_0 font_Ray" id="save_button">ذخیره</button>
+            <button type="button" class="button_element background_color_0_2 border_none text_color_1 font_Ray margin_left_20" onclick="delete_user_popup('{{ user_data.id }}')">حذف مدیر</button>
+        </div>
+    </form>
+{% endblock %}

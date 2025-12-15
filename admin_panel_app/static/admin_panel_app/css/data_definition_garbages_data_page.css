@@ -1,0 +1,92 @@
+.page_contents_div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.inputs_div {
+    width: 90%;
+    max-height: 95%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    flex-direction: row-reverse;
+}
+
+.check_input_div {
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+    padding: 7px 5px;
+    box-sizing: border-box;
+    border-radius: 12px;
+    justify-content: flex-end;
+}
+
+.message_text_input {
+    height: 150px;
+}
+
+.button_group_div {
+    justify-content: flex-start;
+    flex-direction: row-reverse;
+}
+
+.tab_div {
+    width: 90%;
+    height: 100%;
+    margin-bottom: 20px;
+    border-radius: 12px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+}
+
+.garbages_list_div {
+    direction: rtl;
+    border-radius: 12px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    position: relative;
+    max-height: 100% !important;
+}
+
+.panel_div {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.categories_list_div {
+    box-shadow: 0 0 1em var(--color-0-2);
+    direction: rtl;
+    border-radius: 12px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    position: relative;
+}
+
+.units_list_div {
+    box-shadow: 0 0 1em var(--color-0-2);
+    direction: rtl;
+    border-radius: 12px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    position: relative;
+}
+
+.show_button {
+    font-size: 22px;
+    color: var(--color-2);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.show_button i {
+    display: flex;
+}

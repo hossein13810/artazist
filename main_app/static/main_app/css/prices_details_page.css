@@ -1,0 +1,20 @@
+.garbage_image_div {
+    width: 100%;
+}
+
+.garbage_image_div img {
+    width: 100%;
+    height: auto;
+}
+
+.garbage_price_div {
+    width: 90%;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row-reverse;
+}
+
+.garbage_price_div div, .garbage_price_div span {
+    font-size: 20px !important;
+    direction: rtl;
+}

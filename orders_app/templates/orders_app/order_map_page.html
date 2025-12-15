@@ -1,0 +1,80 @@
+{% extends 'base_app/base_page.html' %}
+{% load static %}
+
+{% block page_title %}موقعیت مکانی زباله{% endblock %}
+
+{% block page_headers_div %}
+    <link rel="stylesheet" href="{% static 'orders_app/css/order_map_page.css' %}">
+    <link
+            rel="preload"
+            href="https://static.neshan.org/sdk/leaflet/v1.9.4/neshan-sdk/v1.0.8/index.css"
+            as="style"
+            onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link
+                rel="stylesheet"
+                href="https://static.neshan.org/sdk/leaflet/v1.9.4/neshan-sdk/v1.0.8/index.css">
+    </noscript>
+    <script
+            src="https://static.neshan.org/sdk/leaflet/v1.9.4/neshan-sdk/v1.0.8/index.js"
+            defer>
+    </script>
+    <script src="{% static 'orders_app/js/order_map_page.js' %}"></script>
+{% endblock %}
+
+{% block back_button_block %}
+    <a class="text_color_0 back_button" href="/main_page/" onclick="show_loading_div()"><i class="bi bi-caret-left-fill text_color_0"></i></a>
+{% endblock %}
+
+{% block page_contents_block %}
+
+    <div id="map" class="map_div"></div>
+    <div class="map_lock_div display_none" id="map_lock_div"></div>
+    <div class="center_marker"></div>
+
+    <form action="/order_map_page/" method="post" class="location_form" id="location_form" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="my_location_div">
+            <button class="text_color_3 font_Ray my_location_button" onclick="go_to_my_location()" type="button" id="my_location_button"><i class="bi bi-crosshair"></i></button>
+        </div>
+        <div id="address_div" class="text_color_1 font_Ray display_none margin_bottom_10 address_div"></div>
+        <div class="options_div" id="selected_address_list">
+            <div class="selected_address_list">
+                {% for address in selected_address_data %}
+                    <button class="one_selected_address margin_left_10" id="{{ address.coords_lat }}__{{ address.coords_lng }}" onclick="set_location(this)" type="button"><i class="bi bi-heart"></i>{{ address.address_title }}</button>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="options_div">
+            <input class="input_element background_color_0_4 border_0_2 address_input font_Ray text_color_0_3" aria-label="" dir="rtl" id="address_input">
+            <div class="dates_div display_none" id="dates_div"></div>
+        </div>
+        <div class="options_div margin_bottom_10 margin_top_10 display_none" id="options_div">
+            <div class="times_div display_none" id="times_div">
+                <button class="one_time_button background_color_0_4 text_color_2" id="time__9_12" type="button" onclick="select_option('time', this)">
+                    <span>ساعت</span>
+                    <span>۹ تا ۱۲</span>
+                </button>
+                <button class="one_time_button background_color_0_4 text_color_2" id="time__11_14" type="button" onclick="select_option('time', this)">
+                    <span>ساعت</span>
+                    <span>۱۱ تا ۱۴</span>
+                </button>
+                <button class="one_time_button background_color_0_4 text_color_2" id="time__13_16" type="button" onclick="select_option('time', this)">
+                    <span>ساعت</span>
+                    <span>۱۳ تا ۱۶</span>
+                </button>
+                <button class="one_time_button background_color_0_4 text_color_2" id="time__15_19" type="button" onclick="select_option('time', this)">
+                    <span>ساعت</span>
+                    <span>۱۵ تا ۱۹</span>
+                </button>
+            </div>
+        </div>
+        <button id="next_button" class="button_element text_color_1 border_none font_Ray next_button disabled_element" type="button" onclick="show_timeline_div()" disabled>انتخاب موقعیت</button>
+        <button id="submit_button" class="button_element text_color_1 background_color_0 border_none font_Ray next_button display_none" onclick="show_loading_div()" type="submit">تایید و ثبت درخواست</button>
+        <input type="hidden" id="coords_lat_input" name="coords_lat_input">
+        <input type="hidden" id="coords_lng_input" name="coords_lng_input">
+        <input type="hidden" id="loc_address_input" name="loc_address_input">
+        <input type="hidden" id="date_input" name="date_input">
+        <input type="hidden" id="timeline_input" name="timeline_input">
+    </form>
+{% endblock %}

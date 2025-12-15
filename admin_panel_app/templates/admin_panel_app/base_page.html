@@ -1,0 +1,74 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block page_title_block %}{% endblock %}</title>
+    <link rel="icon" type="image/x-icon" href="{% static 'base_app/icons/artazist.ico' %}">
+    <link rel="stylesheet" href="{% static 'base_app/css/base/bootstrap_icons.css' %}">
+    <link rel="stylesheet" href="{% static 'base_app/css/base/elements.css' %}">
+    <link rel="stylesheet" href="{% static 'base_app/css/base/colors.css' %}">
+    <link rel="stylesheet" href="{% static 'base_app/css/base/fonts.css' %}">
+    <link rel="stylesheet" href="{% static 'base_app/css/base/sizes.css' %}">
+    <link rel="stylesheet" href="{% static 'base_app/css/base/borders.css' %}">
+    <link rel="stylesheet" href="{% static 'base_app/css/base/margins.css' %}">
+    <link rel="stylesheet" href="{% static 'base_app/css/select2.css' %}">
+    <link rel="stylesheet" href="{% static 'admin_panel_app/css/base_page.css' %}">
+    <script src="{% static 'admin_panel_app/js/base_page.js' %}"></script>
+    <script src="{% static 'base_app/js/jquery.js' %}"></script>
+    <script src="{% static 'base_app/js/select2.js' %}"></script>
+    {% block page_headers_block %}{% endblock %}
+</head>
+<body>
+
+<div class="menu_div">
+    <div class="menu_icon_div margin_top_20 margin_bottom_20">
+        <img src="{% static 'base_app/images/artazist_normal.jpg' %}" alt="">
+    </div>
+    <h4 class="text_color_2 font_Delius_Regular margin_0">{{ user_fullname }}</h4>
+    <div class="menu_links_div margin_top_20 w_100">
+        {% if 'orders_list_page' in user_admin_permissions %}
+            <a class="background_color_0 text_color_1 font_Ray w_100" id="orders_list_page_link" href="/orders_list_page/">لیست درخواست ها<i class="bi bi-card-checklist margin_left_10"></i></a>
+        {% endif %}
+        {% if 'financial_requests_list_page' in user_admin_permissions %}
+            <a class="background_color_0 text_color_1 font_Ray w_100" id="financial_requests_list_page_link" href="/financial_requests_list_page/">تراکنش های مالی<i class="bi bi-cash-stack margin_left_10"></i></a>
+        {% endif %}
+        {% if 'send_message_page' in user_admin_permissions %}
+            <a class="background_color_0 text_color_1 font_Ray w_100" id="send_message_page_link" href="/send_message_page/">ارسال پیغام<i class="bi bi-chat-square-dots margin_left_10"></i></a>
+        {% endif %}
+        {% if 'users_list_page' in user_admin_permissions %}
+            <a class="background_color_0 text_color_1 font_Ray w_100" id="users_list_page_link" href="/users_list_page/">لیست کاربران<i class="bi bi-person-video2 margin_left_10"></i></a>
+        {% endif %}
+        {% if 'admins_list_page' in user_admin_permissions %}
+            <a class="background_color_0 text_color_1 font_Ray w_100" id="admins_list_page_link" href="/admins_list_page/">لیست مدیران<i class="bi bi-person-lines-fill margin_left_10"></i></a>
+        {% endif %}
+        {% if 'data_definition_page' in user_admin_permissions %}
+            <a class="background_color_0 text_color_1 font_Ray w_100" id="data_definition_page_link" href="/data_definition_garbages_data_page/">تعریف داده ها<i class="bi bi-database-add margin_left_10"></i></a>
+        {% endif %}
+        <a class="background_color_0 text_color_1 font_Ray w_100" id="admin_account_settings_page_link" href="/admin_account_settings_page/">تنظیمات حساب کاربری<i class="bi bi-sliders margin_left_10"></i></a>
+        <a class="background_color_0 text_color_1 font_Ray w_100" href="/admin_logout/">خروج<i class="bi bi-box-arrow-right margin_left_10"></i></a>
+    </div>
+</div>
+
+<div class="popup_back_div display_none" id="popup_back_div" onclick="show_hide_popup('hide')"></div>
+<div class="popup_div" id="popup_div"></div>
+
+<div class="page_name_div">
+    <h3 class="font_Ray_Medium text_color_2 margin_right_20">{% block page_name_block %}{% endblock %}</h3>
+</div>
+
+<div class="page_contents_div">
+    {% block page_contents_block %}{% endblock %}
+</div>
+
+{% if messages %}
+    {% for msg in messages %}
+        <div id="message_div" class="message_div font_Ray dir_rtl message_{{ msg.tags }}">{{ msg }}</div>
+    {% endfor %}
+{% endif %}
+
+<div id="alert_div" class="message_div font_Ray dir_rtl display_none"></div>
+
+</body>
+</html>

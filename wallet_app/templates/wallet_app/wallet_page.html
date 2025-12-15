@@ -1,0 +1,35 @@
+{% extends 'base_app/base_page.html' %}
+{% load static %}
+
+{% block page_title %}کیف پول{% endblock %}
+
+{% block page_headers_div %}
+    <link rel="stylesheet" href="{% static 'wallet_app/css/wallet_page.css' %}">
+    <script src="{% static 'wallet_app/js/wallet_page.js' %}"></script>
+{% endblock %}
+
+{% block page_contents_block %}
+    <input id="error" type="hidden" value="{{ error }}">
+    <form action="/wallet_page/" method="post" class="w_90">
+        {% csrf_token %}
+        <input type="hidden" id="user_inventory_input" value="{{ wallet_data.inventory }}">
+        <div class="withdrawable_inventory_div margin_top_20">
+            <div class="font_Ray margin_0 text_color_1 font_12px">موجودی (تومان):</div>
+            <div class="font_Ray_ExtraBlack text_color_2 inventory_div" onclick="withdrawal_all_inventory()" id="inventory_div">{{ wallet_data.inventory }}</div>
+        </div>
+        <div class="input_group_div w_100 margin_top_10">
+            <label class="font_Ray" for="withdrawal_amount_input">مبلغ برداشتی (تومان):</label>
+            <input autocomplete="off" type="number" class="input_element background_color_0 border_0_2 font_Ray w_100" dir="ltr" max="{{ wallet_data.inventory }}" min="10000" id="withdrawal_amount_input" name="withdrawal_amount_input" onkeyup="check_inputs()">
+            <span class="font_Ray text_color_2 margin_right_10 description_span">حداقعل مبلغ قابل برداشت 50,000 تومان است</span>
+        </div>
+        <div class="input_group_div w_100 margin_top_10">
+            <label class="font_Ray" for="sheba_number_input">شماره شبا:</label>
+            <div class="w_100 info_input_div">
+                <span class="font_Delius_Regular info_span background_color_0_2">IR</span><input autocomplete="off" type="number" class="input_element background_color_0 border_0_2 font_Ray w_100" dir="ltr" id="sheba_number_input" name="sheba_number_input" value="{{ wallet_data.sheba_number }}" onkeyup="check_inputs()">
+            </div>
+        </div>
+        <div class="w_100 button_group_div margin_top_20">
+            <button class="button_element font_Ray border_none text_color_1 w_100 disabled_element" disabled id="save_button" onclick="show_loading_div()">برداشت</button>
+        </div>
+    </form>
+{% endblock %}

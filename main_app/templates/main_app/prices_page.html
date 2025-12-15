@@ -1,0 +1,21 @@
+{% extends 'base_app/base_page.html' %}
+{% load static %}
+
+{% block page_title %}قیمت ها{% endblock %}
+
+{% block page_headers_div %}
+    <link rel="stylesheet" href="{% static 'main_app/css/prices_page.css' %}">
+{% endblock %}
+
+{% block page_contents_block %}
+    <div class="prices_list_div w_90 margin_top_20">
+        {% for garbage in garbage_data %}
+            <a class="one_price_div w_49" href="/prices_details_page/?id={{ garbage.id }}" onclick="show_loading_div()">
+                <div class="garbage_icon_div">
+                    <img src="{{ garbage.garbage_icon.url }}" alt="">
+                </div>
+                <div class="font_Ray div_1 text_color_1">{{ garbage.garbage_item_name }}</div>
+            </a>
+        {% endfor %}
+    </div>
+{% endblock %}

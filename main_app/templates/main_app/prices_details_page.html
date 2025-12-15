@@ -1,0 +1,27 @@
+{% extends 'base_app/base_page.html' %}
+{% load static %}
+
+{% block page_title %}قیمت ها{% endblock %}
+
+{% block page_headers_div %}
+    <link rel="stylesheet" href="{% static 'main_app/css/prices_details_page.css' %}">
+    <script src="{% static 'main_app/js/prices_details_page.js' %}"></script>
+{% endblock %}
+
+{% block back_button_block %}
+    <a class="text_color_0 back_button" href="/prices_page/" onclick="show_loading_div()"><i class="bi bi-caret-left-fill text_color_0"></i></a>
+{% endblock %}
+
+{% block page_contents_block %}
+    <div class="garbage_image_div">
+        <img src="{{ garbage_data.garbage_image.url }}" alt="">
+    </div>
+    <div class="garbage_price_div margin_top_20">
+        <div class="text_color_2 font_Ray_ExtraBold">قیمت هر {{ garbage_data.units_of_measurement_data }}: </div>
+        <div class="font_Ray margin_right_10 text_color_2" id="price_div">{{ garbage_data.price_per_unit }}</div>
+        <span class="font_Ray text_color_2 font_Ray_ExtraBold margin_right_10">تومان</span>
+    </div>
+    <div class="garbage_descriptions_div w_90 text_color_0 font_Ray text_align_justify dir_rtl margin_top_20">
+        {{ garbage_data.description }}
+    </div>
+{% endblock %}

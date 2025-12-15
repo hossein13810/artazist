@@ -1,0 +1,53 @@
+{% extends 'base_app/base_page.html' %}
+{% load static %}
+
+{% block page_title %}صفحه اصلی{% endblock %}
+
+{% block page_headers_div %}
+    <link rel="stylesheet" href="{% static 'main_app/css/main_page.css' %}">
+    <script src="{% static 'main_app/js/main_page.js' %}"></script>
+{% endblock %}
+
+{% block back_button_block %}
+    <a class="font_Ray font_12px text_color_0_2" onclick="show_loading_div()" href="/wallet_page/">اعتبار: {{ user_inventory }} تومان</a>
+{% endblock %}
+
+{% block page_contents_block %}
+    <input type="hidden" value="{{ identification_code }}" id="identification_code">
+    <input type="hidden" value="{{ my_identification_code }}" id="my_identification_code">
+    <div class="slider_div" id="slider_div">
+        <div class="one_slide_div active" id="slide_1">
+            <img src="{% static 'main_app/images/3.jpg' %}" alt="">
+        </div>
+        <div class="one_slide_div" id="slide_2">
+            <img src="{% static 'main_app/images/2.jpg' %}" alt="">
+        </div>
+        <div class="one_slide_div" id="slide_3">
+            <img src="{% static 'main_app/images/1.jpg' %}" alt="">
+        </div>
+        <div class="one_slide_div" id="slide_4">
+            <img src="{% static 'main_app/images/4.jpg' %}" alt="">
+        </div>
+        <div class="circles_div">
+            <span class="one_circle_span on_circle" id="span_1"></span>
+            <span class="one_circle_span" id="span_2"></span>
+            <span class="one_circle_span" id="span_3"></span>
+            <span class="one_circle_span" id="span_4"></span>
+        </div>
+    </div>
+    <div class="button_group_div w_90 margin_top_20 margin_bottom_20 top_two_buttons_div">
+        <a class="button_element background_color_0_4 w_48 border_none font_Ray" onclick="introducing_to_friends()">معرفی به دوستان<i class="bi bi-share-fill margin_left_10"></i></a>
+        <a class="button_element background_color_0_4 w_48 border_none font_Ray" onclick="show_loading_div()" href="/about_us_page/">درباره ما<i class="bi bi-info-circle margin_left_10"></i></a>
+    </div>
+    <input type="hidden" id="audio_play" value="{{ audio_play }}">
+    <input type="hidden" id="order_db_id" value="{{ order_db_id }}">
+    <audio id="myAudio" src="{% static 'main_app/audio/audio.mp3' %}" preload="auto"></audio>
+    {% if user_orders_list|length == 0 %}
+        <p class="font_Ray margin_0 dir_rtl">هنوز درخواست جدیدی ثبت نکردین!</p>
+        <p class="font_Ray text_color_0 margin_0 dir_rtl">کافیه دکمه پایین رو بزنین و بقیه مراحل رو ادامه بدین ☺︎</p>
+    {% else %}
+        <p class="font_Ray_ExtraBold margin_0 dir_rtl">درخواست های فعال</p>
+        <div class="new_orders_list w_100" id="new_orders_list"></div>
+    {% endif %}
+    <a href="/order_map_page/" class="button_element background_color_0 text_color_1 font_Ray margin_top_20 margin_bottom_20 font_12px w_90" onclick="show_loading_div()">ثبت درخواست جمع آوری</a>
+{% endblock %}

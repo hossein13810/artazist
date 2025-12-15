@@ -1,0 +1,63 @@
+.garbages_list_div {
+    flex: 1;
+}
+
+.one_garbage_div {
+    margin-top: 10px;
+    box-sizing: border-box;
+    direction: rtl;
+    border-radius: 12px;
+    display: flex;
+    background-color: var(--color-0);
+    justify-content: space-between;
+    box-shadow: 0 0 0.5em var(--color-0-3);
+    border: 1px solid var(--color-0-2);
+    position: relative;
+}
+
+.garbage_data_div {
+    flex: 1;
+    padding: 7px 5px;
+    color: var(--color-2);
+    text-align: right;
+    font-family: Ray, serif;
+}
+
+.edit_garbage_data_div {
+    position: absolute;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    top: 10px;
+    left: 10px;
+}
+
+.edit_garbage_data_div a {
+    background: none;
+    border: none;
+    padding: 0;
+    margin-right: 10px;
+}
+
+.edit_garbage_data_div a i {
+    display: flex;
+    font-size: 17px;
+    color: var(--color-2) !important;
+}
+
+
+.garbage_categories_title {
+    text-align: right;
+}
+
+.description_text {
+    font-size: 12px;
+}
+
+.buttons_div {
+    direction: rtl;
+}
+
+.next_button {
+    display: inline-block;
+}

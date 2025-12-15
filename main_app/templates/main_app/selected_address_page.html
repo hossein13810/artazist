@@ -1,0 +1,49 @@
+{% extends 'base_app/base_page.html' %}
+{% load static %}
+
+{% block page_title %}آدرس های منتخب{% endblock %}
+
+{% block page_headers_div %}
+    <link rel="stylesheet" href="{% static 'main_app/css/selected_address_page.css' %}">
+    <link
+            rel="preload"
+            href="https://static.neshan.org/sdk/leaflet/v1.9.4/neshan-sdk/v1.0.8/index.css"
+            as="style"
+            onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link
+                rel="stylesheet"
+                href="https://static.neshan.org/sdk/leaflet/v1.9.4/neshan-sdk/v1.0.8/index.css">
+    </noscript>
+    <script
+            src="https://static.neshan.org/sdk/leaflet/v1.9.4/neshan-sdk/v1.0.8/index.js"
+            defer>
+    </script>
+    <script src="{% static 'main_app/js/selected_address_page.js' %}"></script>
+{% endblock %}
+
+{% block page_contents_block %}
+    <div class="selected_address_list w_100" id="selected_address_list">
+        {% if selected_adderss|length == 0 %}
+            <div class="no_address_div">
+                <div class="no_address_icon"><i class="bi bi-x-diamond"></i></div>
+                <div class="font_Ray_Bold dir_rtl margin_top_20">هنوز آدرس منتخبی ندارید!</div>
+            </div>
+        {% else %}
+            {% for address in selected_adderss %}
+                <div class="one_selected_address w_90">
+                    <div class="address_map_div">
+                        <div class="map_lock_div"></div>
+                        <div class="center_marker"></div>
+                        <div id="map_{{ forloop.counter }}" class="map_div" aria-label="{{ address.coords_lat }}__{{ address.coords_lng }}"></div>
+                    </div>
+                    <div class="data_div">
+                        <div class="address_title_div text_color_2 font_Ray_Bold">{{ address.address_title }}</div>
+                        <div class="address_text_div text_color_0_2 font_Ray font_12px">{{ address.address_text }}</div>
+                        <div class="analyze_color_7 font_Ray w_100 text_align_center font_12px delete_address_span" onclick="delete_order('{{ address.id }}')"><i class="bi bi-x"></i>حذف آدرس</div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+{% endblock %}

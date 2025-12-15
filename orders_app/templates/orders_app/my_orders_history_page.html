@@ -1,0 +1,64 @@
+{% extends 'base_app/base_page.html' %}
+{% load static %}
+
+{% block page_title %}سوابق{% endblock %}
+
+{% block page_headers_div %}
+    <link rel="stylesheet" href="{% static 'orders_app/css/my_orders_history_page.css' %}">
+    <script src="{% static 'orders_app/js/my_orders_history_page.js' %}"></script>
+{% endblock %}
+
+{% block page_contents_block %}
+    <div class="user_orders_list w_90" id="user_orders_list">
+        {% if user_orders_list|length == 0 %}
+            <div class="no_address_div">
+                <div class="no_address_icon"><i class="bi bi-x-diamond"></i></div>
+                <div class="font_Ray_Bold dir_rtl margin_top_20">هنوز درخواستی ثبت نکرده اید!</div>
+            </div>
+        {% else %}
+            <div class="filters_div margin_top_10 margin_bottom_20" id="filters_div">
+                <div class="check_input_div">
+                    <input type="checkbox" id="accept_order_check" onchange="filter_orders()"><label class="font_Ray" for="accept_order_check">تایید شده</label>
+                </div>
+                <div class="check_input_div">
+                    <input type="checkbox" id="not_accept_order_check" onchange="filter_orders()"><label class="font_Ray" for="not_accept_order_check">رد شده</label>
+                </div>
+                <div class="check_input_div">
+                    <input type="checkbox" id="pending_order_check" onchange="filter_orders()"><label class="font_Ray" for="pending_order_check">در انتظار</label>
+                </div>
+                <div class="check_input_div">
+                    <input type="checkbox" id="delete_order_check" onchange="filter_orders()"><label class="font_Ray" for="delete_order_check">لغو شده</label>
+                </div>
+            </div>
+            {% for order in user_orders_list %}
+                <div class="w_100 one_order_div {% if order.delete_status %}delete_order{% elif order.order_status %}accept_order{% elif order.order_status == False %}not_accept_order{% elif order %}pending_order{% endif %}">
+                    <div class="order_data_div">
+                        <div class="text_color_1 font_Ray_Black"><span>{{ order.access_token }}</span></div>
+                        <div class="text_color_1 data_text">
+                            <span class="font_12px">بازه انتخابی</span>
+                            <span class="font_12px">{{ order.get_jalali_order_timeline }}</span>
+                        </div>
+                        <div class="text_color_1 data_text">
+                            <span class="font_12px">وضعیت</span>
+                            {% if not order.delete_status %}
+                                {% if order.order_status %}
+                                    <span class="font_12px status_span status_span_green"><i class="bi bi-circle-fill"></i>تایید شده</span>
+                                {% elif order.order_status == False %}
+                                    <span class="font_12px status_span status_span_red"><i class="bi bi-circle-fill"></i>رد شده</span>
+                                {% else %}
+                                    <span class="font_12px status_span status_span_yellow"><i class="bi bi-circle-fill"></i>در انتظار</span>
+                                {% endif %}
+                            {% else %}
+                                <span class="font_12px status_span status_span_gray"><i class="bi bi-circle-fill"></i>لغو شده</span>
+                            {% endif %}
+                        </div>
+                        <div class="text_color_0_3 font_Ray text_align_justify font_12px margin_top_10">{{ order.address }}</div>
+                        <div class="order_date_div font_Ray">
+                            <span class="text_color_0_3 font_12px">برای {{ order.get_str_order_date }}</span>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+{% endblock %}

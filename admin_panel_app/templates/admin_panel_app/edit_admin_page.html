@@ -1,0 +1,92 @@
+{% extends 'admin_panel_app/base_page.html' %}
+{% load static %}
+
+{% block page_headers_block %}
+    <link rel="stylesheet" href="{% static 'admin_panel_app/css/edit_admin_page.css' %}">
+    <script src="{% static 'admin_panel_app/js/edit_admin_page.js' %}"></script>
+{% endblock %}
+
+{% block page_title_block %}ویرایش مدیر{% endblock %}
+{% block page_name_block %}ویرایش مدیر{% endblock %}
+
+{% block page_contents_block %}
+    <form class="inputs_div w_90" action="/edit_admin_page/" method="post" id="inputs_form">
+        {% csrf_token %}
+        <input type="hidden" name="user_id_input" value="{{ user_data.id }}">
+        <div class="input_group_div w_48 margin_top_20">
+            <label class="text_color_1 font_Ray" for="firstname_input">نام:</label>
+            <input class="input_element text_color_1 border_0_2 font_Ray" id="firstname_input" dir="auto" name="firstname_input" required autocomplete="off" value="{{ user_data.user_firstname }}" onkeyup="check_inputs()">
+        </div>
+        <div class="input_group_div w_48 margin_top_20">
+            <label class="text_color_1 font_Ray" for="lastname_input">نام خانوادگی:</label>
+            <input class="input_element text_color_1 border_0_2 font_Ray" id="lastname_input" dir="auto" name="lastname_input" required autocomplete="off" value="{{ user_data.user_lastname }}" onkeyup="check_inputs()">
+        </div>
+        <div class="input_group_div w_48 margin_top_20">
+            <label class="text_color_1 font_Ray" for="phone_number_input">شماره موبایل: (نام کاربری)</label>
+            <input autocomplete="off" type="tel" class="input_element background_color_0 border_0_2 font_Ray w_100" dir="auto" id="phone_number_input" name="phone_number_input" required value="{{ user_data.phone_number }}" onkeyup="check_inputs()">
+        </div>
+        <div class="input_group_div w_48 margin_top_20">
+            <label class="text_color_1 font_Ray" for="national_code_input">کد ملی:</label>
+            <input class="input_element text_color_1 border_0_2 font_Ray" id="national_code_input" dir="auto" name="national_code_input" required autocomplete="off" value="{{ user_data.national_code }}" onkeyup="check_inputs()">
+        </div>
+        <div class="input_group_div w_48 margin_top_20">
+            <label class="text_color_1 font_Ray" for="password_input">رمز عبور:</label>
+            <input type="password" class="input_element text_color_1 border_0_2 font_Ray" id="password_input" name="password_input" autocomplete="off" onkeyup="check_inputs()">
+        </div>
+        <div class="input_group_div w_48 margin_top_20">
+            <label class="text_color_1 font_Ray" for="re_password_input">تکرار رمز عبور:</label>
+            <input type="password" class="input_element text_color_1 border_0_2 font_Ray" id="re_password_input" name="re_password_input" autocomplete="off" onkeyup="check_inputs()">
+        </div>
+        <div class="input_group_div w_100 margin_top_20">
+            <span class="text_color_1 font_Ray">دسترسی ها:</span>
+            <div class="check_input_div border_0_2 background_color_0" id="checks_div">
+                <div class="checks_group_div">
+                    <div>
+                        <label class="font_Ray cursor_pointer" for="orders_list_page_check">لیست درخواست ها</label><input class="cursor_pointer parrent_check" type="checkbox" id="orders_list_page_check" name="orders_list_page_check" onclick="check_inputs(), show_sub_checks(this)" {% if 'orders_list_page' in user_permissions %}checked{% endif %}>
+                    </div>
+                    <div {% if 'orders_list_page' not in user_permissions %}class="display_none"{% endif %} id="write_orders_list_page_check_div">
+                        <label class="font_Ray cursor_pointer text_color_0_2" for="write_orders_list_page_check">دسترسی مدیریت</label><input class="cursor_pointer margin_right_20" type="checkbox" id="write_orders_list_page_check" name="write_orders_list_page_check" {% if 'write_orders_list_page' in user_permissions %}checked{% endif %}>
+                    </div>
+                </div>
+                <div class="checks_group_div">
+                    <div>
+                        <label class="font_Ray cursor_pointer" for="financial_requests_list_page_check">تراکنش های مالی</label><input class="cursor_pointer parrent_check" type="checkbox" id="financial_requests_list_page_check" name="financial_requests_list_page_check" onclick="check_inputs(), show_sub_checks(this)" {% if 'financial_requests_list_page' in user_permissions %}checked{% endif %}>
+                    </div>
+                    <div {% if 'financial_requests_list_page' not in user_permissions %}class="display_none"{% endif %} id="write_financial_requests_list_page_check_div">
+                        <label class="font_Ray cursor_pointer text_color_0_2" for="write_financial_requests_list_page_check">دسترسی مدیریت</label><input class="cursor_pointer margin_right_20" type="checkbox" id="write_financial_requests_list_page_check" name="write_financial_requests_list_page_check" {% if 'write_financial_requests_list_page' in user_permissions %}checked{% endif %}>
+                    </div>
+                </div>
+                <div class="checks_group_div">
+                    <div>
+                        <label class="font_Ray cursor_pointer" for="send_message_page_check">ارسال پیغام</label><input class="cursor_pointer parrent_check" type="checkbox" id="send_message_page_check" name="send_message_page_check" onclick="check_inputs()" {% if 'send_message_page' in user_permissions %}checked{% endif %}>
+                    </div>
+                </div>
+                <div class="checks_group_div">
+                    <div>
+                        <label class="font_Ray cursor_pointer" for="users_list_page_check">لیست کاربران</label><input class="cursor_pointer parrent_check" type="checkbox" id="users_list_page_check" name="users_list_page_check" onclick="check_inputs()" {% if 'users_list_page' in user_permissions %}checked{% endif %}>
+                    </div>
+                </div>
+                <div class="checks_group_div">
+                    <div>
+                        <label class="font_Ray cursor_pointer" for="admins_list_page_check">لیست مدیران</label><input class="cursor_pointer parrent_check" type="checkbox" id="admins_list_page_check" name="admins_list_page_check" onclick="check_inputs(), show_sub_checks(this)" {% if 'admins_list_page' in user_permissions %}checked{% endif %}>
+                    </div>
+                    <div {% if 'admins_list_page' not in user_permissions %}class="display_none"{% endif %} id="write_admins_list_page_check_div">
+                        <label class="font_Ray cursor_pointer text_color_0_2" for="write_admins_list_page_check">دسترسی مدیریت</label><input class="cursor_pointer margin_right_20" type="checkbox" id="write_admins_list_page_check" name="write_admins_list_page_check" {% if 'write_admins_list_page' in user_permissions %}checked{% endif %}>
+                    </div>
+                </div>
+                <div class="checks_group_div">
+                    <div>
+                        <label class="font_Ray cursor_pointer" for="data_definition_page_check">تعریف داده ها</label><input class="cursor_pointer parrent_check" type="checkbox" id="data_definition_page_check" name="data_definition_page_check" onclick="check_inputs(), show_sub_checks(this)" {% if 'data_definition_page' in user_permissions %}checked{% endif %}>
+                    </div>
+                    <div {% if 'data_definition_page' not in user_permissions %}class="display_none"{% endif %} id="write_data_definition_page_check_div">
+                        <label class="font_Ray cursor_pointer text_color_0_2" for="write_data_definition_page_check">دسترسی مدیریت</label><input class="cursor_pointer margin_right_20" type="checkbox" id="write_data_definition_page_check" name="write_data_definition_page_check" {% if 'write_data_definition_page' in user_permissions %}checked{% endif %}>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="button_group_div margin_top_20 w_100 dir_ltr">
+            <button class="button_element background_color_2 border_none text_color_0 font_Ray" id="save_button">ذخیره</button>
+            <button type="button" class="button_element background_color_0_2 border_none text_color_1 font_Ray margin_left_20" onclick="delete_user_popup('{{ user_data.id }}')">حذف مدیر</button>
+        </div>
+    </form>
+{% endblock %}

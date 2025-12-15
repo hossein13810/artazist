@@ -1,0 +1,57 @@
+{% extends 'base_app/base_page.html' %}
+{% load static %}
+
+{% block page_title %}جزئیات درخواست{% endblock %}
+
+{% block page_headers_div %}
+    <link rel="stylesheet" href="{% static 'orders_app/css/order_details_page.css' %}">
+
+    <link rel="stylesheet" href="{% static 'orders_app/css/map/leaflet.css' %}"/>
+    <link rel="stylesheet" href="{% static 'orders_app/css/map/control.geocoder.css' %}"/>
+
+    <script src="{% static 'orders_app/js/map/leaflet.js' %}"></script>
+    <script src="{% static 'orders_app/js/map/control.geocoder.js' %}"></script>
+    <script src="{% static 'orders_app/js/order_details_page.js' %}"></script>
+{% endblock %}
+
+{% block back_button_block %}
+    <a class="text_color_3 back_button" href="/my_orders_history_page/"><i class="bi bi-caret-left-fill"></i></a>
+{% endblock %}
+
+
+{% block page_contents_block %}
+    <div id="map" class="map_div"></div>
+    <input id="coords_lat_input" value="{{ order_data.order_map_lat_location }}" type="hidden">
+    <input id="coords_lng_input" value="{{ order_data.order_map_lng_location }}" type="hidden">
+    <div class="order_data_div w_90 dir_rtl margin_top_20">
+        <p class="text_align_justify font_Ray">
+            <span class="font_Ray_Medium text_color_3">عنوان:</span>
+            <span class="font_Ray text_color_2">{{ order_data.order_title }}</span>
+        </p>
+    </div>
+    <div class="order_data_div w_90 dir_rtl margin_top_10">
+        <p class="text_align_justify font_Ray">
+            <span class="font_Ray_Medium text_color_3">بازه زمانی:</span>
+            <span class="font_Ray text_color_2">{{ order_data.get_jalali_order_timeline }}</span>
+        </p>
+    </div>
+    <div class="order_data_div w_90 dir_rtl margin_top_10">
+        <p class="text_color_0_3 text_align_justify font_Ray">
+            <span class="font_Ray_Medium text_color_3">توضیحات:</span>
+            {{ order_data.description }}
+        </p>
+    </div>
+    <hr class="w_90 margin_top_20">
+    <div class="garbages_list_div w_100">
+        <div class="text_color_2 font_Ray_Medium w_100 text_align_center">لیست زباله ها</div>
+        {% for item in order_garbages_data %}
+            <div class="one_garbage_div w_90">
+                <div class="garbage_data_div">
+                    <div class="garbage_text_div font_Ray">{{ item.garbage_data.garbage_item_name }}</div>
+                    <div class="garbage_text_div text_color_2">{{ item.garbage_amount }} {{ item.garbage_data.units_of_measurement_data.unit_name }}</div>
+                    <div class="garbage_text_div text_color_0_3 text_align_justify description_text">{{ item.description }}</div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

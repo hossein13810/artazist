@@ -1,0 +1,42 @@
+{% extends 'admin_panel_app/base_page.html' %}
+{% load static %}
+
+{% block page_headers_block %}
+    <link rel="stylesheet" href="{% static 'admin_panel_app/css/create_garbage_page.css' %}">
+{% endblock %}
+
+{% block page_title_block %}زباله جدید{% endblock %}
+{% block page_name_block %}زباله جدید{% endblock %}
+
+{% block page_contents_block %}
+    <form class="inputs_div w_90" action="/create_garbage_page/" method="post" id="inputs_form" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="input_group_div w_100 margin_top_20">
+            <label class="text_color_1 font_Ray" for="garbage_item_name_input">آیتم زباله:</label>
+            <input class="input_element text_color_1 border_0_2 font_Ray" id="garbage_item_name_input" dir="auto" name="garbage_item_name_input" required autocomplete="off">
+        </div>
+        <div class="input_group_div w_49 margin_top_20">
+            <label class="text_color_1 font_Ray" for="unit_input">واحد اندازه گیری:</label>
+            <input class="input_element text_color_1 border_0_2 font_Ray" id="unit_input" dir="auto" name="unit_input" required autocomplete="off">
+        </div>
+        <div class="input_group_div w_49 margin_top_20">
+            <label class="text_color_1 font_Ray" for="price_input">قیمت هر واحد: (تومان)</label>
+            <input class="input_element text_color_1 border_0_2 font_Ray" id="price_input" type="number" dir="auto" name="price_input" required autocomplete="off">
+        </div>
+        <div class="input_group_div w_49 margin_top_20">
+            <label class="text_color_1 font_Ray" for="icon_input">آیکون زباله</label>
+            <input class="input_element text_color_1 border_0_2 font_Ray" id="icon_input" type="file" dir="auto" name="icon_input" required autocomplete="off">
+        </div>
+        <div class="input_group_div w_49 margin_top_20">
+            <label class="text_color_1 font_Ray" for="image_input">تصویر زباله</label>
+            <input class="input_element text_color_1 border_0_2 font_Ray" id="image_input" type="file" dir="auto" name="image_input" required autocomplete="off">
+        </div>
+        <div class="input_group_div w_100 margin_top_20">
+            <label class="text_color_1 font_Ray" for="description_input">توضیحات:</label>
+            <textarea class="input_element text_color_1 border_0_2 font_Ray message_text_input" dir="auto" id="description_input" name="description_input" required autocomplete="off"></textarea>
+        </div>
+        <div class="button_group_div margin_top_20 w_100 dir_ltr">
+            <button class="button_element background_color_2 border_none text_color_0 font_Ray">ذخیره</button>
+        </div>
+    </form>
+{% endblock %}

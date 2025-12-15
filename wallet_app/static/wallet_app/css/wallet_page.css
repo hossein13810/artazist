@@ -1,0 +1,21 @@
+.description_span {
+    font-size: 12px;
+    min-height: 20px;
+}
+
+.withdrawable_inventory_div {
+    direction: rtl;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.button_all_inventory {
+    width: fit-content;
+    float: left;
+}
+
+.inventory_div {
+    font-size: 25px !important;
+}
